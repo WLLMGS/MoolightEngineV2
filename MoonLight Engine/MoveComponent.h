@@ -9,6 +9,6 @@ public:
 	virtual void Update(float elapsedSec) override;
 private:
 	float m_X, m_Y;
-	float m_Speed = 200.0f;
+	float m_Speed = 350.0f;
 };
 

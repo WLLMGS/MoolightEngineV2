@@ -75,4 +75,23 @@ void GameObject::SetScale(float scale)
 
 }
 
+WG::Vector2 GameObject::GetPosition()
+{
+	WG::Vector2 pos;
+
+
+	auto rigid = GetComponent<RigidBodyComponent>();
+	
+	if(rigid)
+	{
+		return rigid->GetPosition();
+	}
+
+	pos.x = m_pRectangle->getPosition().x;
+	pos.y = m_pRectangle->getPosition().y;
+
+	return pos;
+
+}
+
 

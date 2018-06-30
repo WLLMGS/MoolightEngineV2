@@ -23,6 +23,8 @@ GameScene::~GameScene()
 
 void GameScene::RootUpdate(float elapsedSec)
 {
+	m_Camera.Update();
+
 	//update all game objects
 	for(auto obj : m_pObjects)
 	{
@@ -33,6 +35,8 @@ void GameScene::RootUpdate(float elapsedSec)
 
 void GameScene::RootRender()
 {
+	m_Camera.Draw();
+
 	//render all game objects
 	for(auto obj : m_pObjects)
 	{

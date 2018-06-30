@@ -15,6 +15,8 @@ public:
 	string GetTag() const;
 	void SetPosition(float x, float y);
 	void SetScale(float scale);
+	WG::Vector2 GetPosition();
+	virtual void OnCollision(GameObject* other) { (other); };
 public:
 	template<class T> T* GetComponent()
 	{
@@ -35,7 +37,7 @@ private:
 	virtual void Update(float elapsedSec) { (elapsedSec); };
 	virtual void Render(){};
 
-	virtual void OnCollision(ColliderComponent* other) { (other); };
+	
 
 private:
 	friend class SpriteComponent;

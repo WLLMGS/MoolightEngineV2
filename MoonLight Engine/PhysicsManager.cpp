@@ -2,6 +2,7 @@
 #include "PhysicsManager.h"
 
 
+
 b2World* PhysicsManager::GetWorld()
 {
 	return m_pWorld;
@@ -10,6 +11,8 @@ b2World* PhysicsManager::GetWorld()
 PhysicsManager::PhysicsManager()
 {
 	m_pWorld = new b2World({ 0,0 });
+
+	m_pWorld->SetContactListener(&m_Listener);
 }
 
 

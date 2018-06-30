@@ -33,6 +33,7 @@ ResourceManager::ResourceManager()
 	LoadTexture("character1DiagUpFlipped", "characters/2_diagupFlipped.png");
 
 	LoadTexture("dungeonTiles", "dungeonTileset.png");
+	LoadTexture("crate", "crate.jpg");
 }
 
 void ResourceManager::LoadTexture(string name, string path)

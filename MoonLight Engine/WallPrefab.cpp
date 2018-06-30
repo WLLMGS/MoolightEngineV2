@@ -12,10 +12,10 @@ WallPrefab::WallPrefab()
 
 	m_Tag = "Wall";
 
-	AddComponent(new RigidBodyComponent());
+	AddComponent(new RigidBodyComponent(true, true, 1,1,1,0));
 
 
-	SetScale(3.0f);
+	SetScale(2.0f);
 }
 
 

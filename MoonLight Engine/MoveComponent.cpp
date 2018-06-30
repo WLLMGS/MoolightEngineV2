@@ -17,6 +17,8 @@ MoveComponent::~MoveComponent()
 
 void MoveComponent::Update(float elapsedSec)
 {
+	(elapsedSec);
+
 	auto input = InputManager::GetInstance();
 
 	auto rigid = m_pGameObject->GetComponent<RigidBodyComponent>();

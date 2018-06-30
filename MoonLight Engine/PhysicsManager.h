@@ -1,4 +1,5 @@
 #pragma once
+#include "CustomContactListener.h"
 class PhysicsManager
 {
 public:
@@ -15,5 +16,7 @@ public:
 private:
 	PhysicsManager();
 	b2World* m_pWorld = nullptr;
+	CustomContactListener m_Listener;
+
 };
 

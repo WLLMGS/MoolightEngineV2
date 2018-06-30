@@ -8,7 +8,7 @@ public:
 	~PlayerPrefab();
 	
 private:
-	virtual void OnCollision(ColliderComponent* other) override;
+	virtual void OnCollision(GameObject* other) override;
 	
 };
 

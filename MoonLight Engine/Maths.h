@@ -2,6 +2,7 @@
 
 namespace Math
 {
+
 	//pi conversions
 	const float Rad2Deg = 180.0f / float(M_PI);
 	const float Deg2Rad = float(M_PI) / 180.0f;
@@ -16,4 +17,14 @@ namespace Math
 
 		return angle;
 	}
+}
+
+
+namespace WG
+{
+	struct Vector2
+	{
+		Vector2(float x = 0.0f, float y = 0.0f) : x(x), y(y){}
+		float x, y;
+	};
 }

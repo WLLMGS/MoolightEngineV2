@@ -222,6 +222,13 @@
     <ClInclude Include="PhysicsManager.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomContactListener.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CratePrefab.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameScene.cpp">
@@ -413,5 +420,12 @@
     <ClCompile Include="PhysicsManager.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomContactListener.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CratePrefab.cpp" />
   </ItemGroup>
 </Project>

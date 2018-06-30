@@ -3,38 +3,17 @@
 #include "PhysicsManager.h"
 #include "GameObject.h"
 
-RigidBodyComponent::RigidBodyComponent()
+
+RigidBodyComponent::RigidBodyComponent(bool isStatic, bool isBox, float linearDamp, float density, float friction, float restitution)
 {
-	auto world = PhysicsManager::GetInstance()->GetWorld();
+	m_IsStatic = isStatic;
+	m_IsBox = isBox;
+	m_LinDamp = linearDamp;
+	m_Density = density;
+	m_Friction = friction;
+	m_Restitution = restitution;
 
-	b2BodyDef bd;
-	bd.type = b2_dynamicBody;
-	bd.position.Set(0.0f, 0.0f);
-	bd.allowSleep = false;
-	bd.active = true;
-	bd.linearDamping = 1.0f;
-	bd.bullet = true;
-
-	m_pBody = world->CreateBody(&bd);
-
-
-	b2CircleShape circle;
-	circle.m_p.Set(0, 0);
-	circle.m_radius = GameSettings::TILESIZE / 2.0f;
-
-	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &circle;
-	fixtureDef.density = 1.0f;
-	fixtureDef.friction = 1.0f;
-	fixtureDef.restitution = 1.0f;
-
-	//fixtureDef.filter.groupIndex = collisionGroup;
-
-	m_pBody->CreateFixture(&fixtureDef);
-
-
-
-	
+	MakeBody();
 }
 
 
@@ -45,6 +24,7 @@ RigidBodyComponent::~RigidBodyComponent()
 
 void RigidBodyComponent::Update(float elapsedSec)
 {
+	(elapsedSec);
 	auto pos = m_pBody->GetPosition();
 
 	m_pGameObject->m_pRectangle->setPosition(pos.x, pos.y);
@@ -67,41 +47,143 @@ void RigidBodyComponent::SetLinearVelocity(float x, float y)
 
 void RigidBodyComponent::SetScale(float scale)
 {
-	auto pos = m_pBody->GetPosition();
-	
+	m_Scale = scale;
+	RemakeBody();
+}
+
+WG::Vector2 RigidBodyComponent::GetPosition() const
+{
+	WG::Vector2 pos;
+
+	pos.x = m_pBody->GetPosition().x;
+	pos.y = m_pBody->GetPosition().y;
+
+
+	return pos;
+}
+
+void RigidBodyComponent::MakeBody()
+{
 	auto world = PhysicsManager::GetInstance()->GetWorld();
 
-	world->DestroyBody(m_pBody);
-
-	auto size = GameSettings::TILESIZE * scale * 0.5f;
-
+	if (m_pBody) world->DestroyBody(m_pBody);
 
 	b2BodyDef bd;
-	bd.type = b2_dynamicBody;
-	bd.position.Set(pos.x, pos.y);
+	bd.type = (m_IsStatic) ? b2_staticBody : b2_dynamicBody;
+	bd.position.Set(0.0f, 0.0f);
 	bd.allowSleep = false;
 	bd.active = true;
-	bd.linearDamping = 1.0f;
+	bd.linearDamping = m_LinDamp;
 	bd.bullet = true;
 
 	m_pBody = world->CreateBody(&bd);
 
+	
 
-	b2CircleShape circle;
-	circle.m_p.Set(0, 0);
-	circle.m_radius = size;
 
-	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &circle;
-	fixtureDef.density = 1.0f;
-	fixtureDef.friction = 1.0f;
-	fixtureDef.restitution = 1.0f;
+	if (m_IsBox)
+	{
+		//box shape
+		b2PolygonShape shape;
+		shape.SetAsBox(GameSettings::TILESIZE / 2.0f, GameSettings::TILESIZE / 2.0f);
 
-	//fixtureDef.filter.groupIndex = collisionGroup;
+		//fixture
+		b2FixtureDef fixtureDef;
+		fixtureDef.shape = &shape;
+		fixtureDef.density = m_Density;
+		fixtureDef.friction = m_Friction;
+		fixtureDef.restitution = m_Restitution;
 
-	m_pBody->CreateFixture(&fixtureDef);
+		//fixtureDef.filter.groupIndex = collisionGroup;
+
+		m_pBody->CreateFixture(&fixtureDef);
+	}
+	else
+	{
+		//circle shape
+		b2CircleShape circle;
+		circle.m_p.Set(0, 0);
+		circle.m_radius = GameSettings::TILESIZE / 2.0f;
+
+		//fixture
+		b2FixtureDef fixtureDef;
+		fixtureDef.shape = &circle;
+		fixtureDef.density = m_Density;
+		fixtureDef.friction = m_Friction;
+		fixtureDef.restitution = m_Restitution;
+
+		//fixtureDef.filter.groupIndex = collisionGroup;
+
+		m_pBody->CreateFixture(&fixtureDef);
+	}
+
+	m_pBody->SetUserData(m_pGameObject);
+
+
+}
+
+void RigidBodyComponent::RemakeBody()
+{
+	auto pos = m_pBody->GetPosition();
+
+	auto world = PhysicsManager::GetInstance()->GetWorld();
+
+	world->DestroyBody(m_pBody);
+
+	auto size = GameSettings::TILESIZE * m_Scale * 0.5f;
+
+
+	b2BodyDef bd;
+	bd.type = (m_IsStatic) ? b2_staticBody : b2_dynamicBody;
+	bd.position.Set(pos.x, pos.y);
+	bd.allowSleep = false;
+	bd.active = true;
+	bd.linearDamping = m_LinDamp;
+	bd.bullet = true;
+
+	m_pBody = world->CreateBody(&bd);
+
+	
+
+	if(m_IsBox)
+	{
+		//box shape
+		b2PolygonShape shape;
+		shape.SetAsBox(size, size);
+		
+		//fixture
+		b2FixtureDef fixtureDef;
+		fixtureDef.shape = &shape;
+		fixtureDef.density = m_Density;
+		fixtureDef.friction = m_Friction;
+		fixtureDef.restitution = m_Restitution;
+
+		//fixtureDef.filter.groupIndex = collisionGroup;
+
+		m_pBody->CreateFixture(&fixtureDef);
+	}
+	else
+	{
+		//circle shape
+		b2CircleShape circle;
+		circle.m_p.Set(0, 0);
+		circle.m_radius = size;
+
+		//fixture
+		b2FixtureDef fixtureDef;
+		fixtureDef.shape = &circle;
+		fixtureDef.density = m_Density;
+		fixtureDef.friction = m_Friction;
+		fixtureDef.restitution = m_Restitution;
+
+		//fixtureDef.filter.groupIndex = collisionGroup;
+
+		m_pBody->CreateFixture(&fixtureDef);
+	}
+	
+	m_pBody->SetUserData(m_pGameObject);
 
 	//set scale of rectangle
-	m_pGameObject->m_pRectangle->setSize({size * 2, size * 2});
+	m_pGameObject->m_pRectangle->setSize({ size * 2, size * 2 });
 	m_pGameObject->m_pRectangle->setOrigin({ size, size });
 }
