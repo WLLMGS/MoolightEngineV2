@@ -37,6 +37,14 @@ void GameObject::RootRender()
 	Render();
 }
 
+void GameObject::RootLateUpdate()
+{
+
+	LateUpdate();
+
+	m_CollisionEvents.clear();
+}
+
 void GameObject::AddComponent(BaseComponent* comp)
 {
 	comp->SetGameObject(this);
@@ -92,6 +100,16 @@ WG::Vector2 GameObject::GetPosition()
 
 	return pos;
 
+}
+
+void GameObject::Destroy()
+{
+	m_IsDestroyed = true;
+}
+
+bool GameObject::IsDestroyed() const
+{
+	return m_IsDestroyed;
 }
 
 

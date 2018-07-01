@@ -4,7 +4,7 @@
 class RigidBodyComponent : public BaseComponent
 {
 public:
-	RigidBodyComponent(bool isStatic = false, bool isBox = false,
+	RigidBodyComponent(short category, short mask,  bool isStatic = false, bool isBox = false,
 		float linearDamp = 1.0f
 		, float density = 1.0f
 	,float friction = 1.0f, float restitution = 1.0f);
@@ -28,8 +28,10 @@ private:
 	float m_Density;
 	float m_Friction;
 	float m_Restitution;
-
 	float m_Scale = 1;
+
+	short m_Category;
+	short m_Mask;
 
 };
 

@@ -18,5 +18,7 @@ private:
 	{
 		Up, Down, Right, Left
 	};
+
+	void GenerateBuilding();
 };
 

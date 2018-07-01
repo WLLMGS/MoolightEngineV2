@@ -8,7 +8,7 @@ CratePrefab::CratePrefab()
 	AddComponent(sprite);
 	sprite->SetTexture("crate");
 
-	auto rigid = new RigidBodyComponent(false, true, 5,5,5,0);
+	auto rigid = new RigidBodyComponent(CollisionGroup::CATEGORY_ENEMY, CollisionGroup::MASK_ENEMY, false, true, 5, 5, 5, 0);
 	AddComponent(rigid);
 
 	SetScale(2.0f);

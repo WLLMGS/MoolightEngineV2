@@ -11,7 +11,7 @@ PlayerPrefab::PlayerPrefab()
 	
 	AddComponent(new MoveComponent());
 	//AddComponent(new ColliderComponent());
-	auto rigid = new RigidBodyComponent(false, false, 0.01f,1,1,0.1);
+	auto rigid = new RigidBodyComponent(CollisionGroup::CATEGORY_PLAYER, CollisionGroup::MASK_PLAYER, false, false, 0.01f, 1.0f, 1.0f, 0.1f);
 	AddComponent(rigid);
 
 	SetScale(1.75f);
@@ -22,8 +22,13 @@ PlayerPrefab::~PlayerPrefab()
 {
 }
 
+void PlayerPrefab::LateUpdate()
+{
+
+}
+
 void PlayerPrefab::OnCollision(GameObject* other)
 {
-	if(other->GetTag() == "Wall") cout << "colliding with wall\n";
+	m_CollisionEvents.push_back(other);
 }
 

@@ -11,12 +11,18 @@ public:
 	~GameObject();
 	void RootUpdate(float elapsedSec);
 	void RootRender();
+	void RootLateUpdate();
+
+	virtual void LateUpdate(){};
+
 	void AddComponent(BaseComponent* comp);
 	string GetTag() const;
 	void SetPosition(float x, float y);
 	void SetScale(float scale);
 	WG::Vector2 GetPosition();
-	virtual void OnCollision(GameObject* other) { (other); };
+	virtual void OnCollision(GameObject* other) { (other); }; 
+	void Destroy();
+	bool IsDestroyed() const;
 public:
 	template<class T> T* GetComponent()
 	{
@@ -32,6 +38,7 @@ public:
 protected:
 	string m_Tag;
 	RectangleShape* m_pRectangle;
+	vector<GameObject*> m_CollisionEvents;
 
 private:
 	virtual void Update(float elapsedSec) { (elapsedSec); };
@@ -48,6 +55,7 @@ private:
 
 	//TransformComponent m_Transform;
 	vector<BaseComponent*> m_pComponents;
+	bool m_IsDestroyed = false;
 
 	
 };

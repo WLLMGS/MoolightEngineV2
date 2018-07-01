@@ -7,7 +7,7 @@ class BaseComponent
 {
 public:
 	BaseComponent();
-	~BaseComponent();
+	virtual ~BaseComponent();
 	
 	virtual void Update(float elapsedSec) ;
 	virtual void Render() ;

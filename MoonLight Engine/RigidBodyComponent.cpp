@@ -4,7 +4,7 @@
 #include "GameObject.h"
 
 
-RigidBodyComponent::RigidBodyComponent(bool isStatic, bool isBox, float linearDamp, float density, float friction, float restitution)
+RigidBodyComponent::RigidBodyComponent(short category, short mask, bool isStatic, bool isBox,  float linearDamp, float density, float friction, float restitution)
 {
 	m_IsStatic = isStatic;
 	m_IsBox = isBox;
@@ -12,6 +12,8 @@ RigidBodyComponent::RigidBodyComponent(bool isStatic, bool isBox, float linearDa
 	m_Density = density;
 	m_Friction = friction;
 	m_Restitution = restitution;
+	m_Category = category;
+	m_Mask = mask;
 
 	MakeBody();
 }
@@ -19,7 +21,7 @@ RigidBodyComponent::RigidBodyComponent(bool isStatic, bool isBox, float linearDa
 
 RigidBodyComponent::~RigidBodyComponent()
 {
-
+	PhysicsManager::GetInstance()->GetWorld()->DestroyBody(m_pBody);
 }
 
 void RigidBodyComponent::Update(float elapsedSec)
@@ -94,7 +96,11 @@ void RigidBodyComponent::MakeBody()
 		fixtureDef.friction = m_Friction;
 		fixtureDef.restitution = m_Restitution;
 
-		//fixtureDef.filter.groupIndex = collisionGroup;
+		//for (int i : m_CollisionGroups) fixtureDef.filter.groupIndex = int16(i);
+		fixtureDef.filter.categoryBits = m_Category;
+		fixtureDef.filter.maskBits = m_Mask;
+
+
 
 		m_pBody->CreateFixture(&fixtureDef);
 	}
@@ -112,7 +118,9 @@ void RigidBodyComponent::MakeBody()
 		fixtureDef.friction = m_Friction;
 		fixtureDef.restitution = m_Restitution;
 
-		//fixtureDef.filter.groupIndex = collisionGroup;
+		//for (int i : m_CollisionGroups) fixtureDef.filter.groupIndex = int16(i);
+		fixtureDef.filter.categoryBits = m_Category;
+		fixtureDef.filter.maskBits = m_Mask;
 
 		m_pBody->CreateFixture(&fixtureDef);
 	}
@@ -158,7 +166,9 @@ void RigidBodyComponent::RemakeBody()
 		fixtureDef.friction = m_Friction;
 		fixtureDef.restitution = m_Restitution;
 
-		//fixtureDef.filter.groupIndex = collisionGroup;
+		//for (int i : m_CollisionGroups) fixtureDef.filter.groupIndex = int16(i);
+		fixtureDef.filter.categoryBits = m_Category;
+		fixtureDef.filter.maskBits = m_Mask;
 
 		m_pBody->CreateFixture(&fixtureDef);
 	}
@@ -176,7 +186,10 @@ void RigidBodyComponent::RemakeBody()
 		fixtureDef.friction = m_Friction;
 		fixtureDef.restitution = m_Restitution;
 
-		//fixtureDef.filter.groupIndex = collisionGroup;
+		//for (int i : m_CollisionGroups) fixtureDef.filter.groupIndex = int16(i);
+		fixtureDef.filter.categoryBits = m_Category;
+		fixtureDef.filter.maskBits = m_Mask;
+
 
 		m_pBody->CreateFixture(&fixtureDef);
 	}
