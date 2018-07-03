@@ -3,6 +3,8 @@
 #include "MoveComponent.h"
 #include "PlayerSpriteComponent.h"
 #include "RigidBodyComponent.h"
+#include "ShootingComponent.h"
+
 PlayerPrefab::PlayerPrefab()
 {
 	auto sprite = new PlayerSpriteComponent();
@@ -15,6 +17,11 @@ PlayerPrefab::PlayerPrefab()
 	AddComponent(rigid);
 
 	SetScale(1.75f);
+
+	
+	auto shootingComp = new ShootingComponent();
+	AddComponent(shootingComp);
+
 }
 
 
@@ -22,13 +29,6 @@ PlayerPrefab::~PlayerPrefab()
 {
 }
 
-void PlayerPrefab::LateUpdate()
-{
 
-}
 
-void PlayerPrefab::OnCollision(GameObject* other)
-{
-	m_CollisionEvents.push_back(other);
-}
 

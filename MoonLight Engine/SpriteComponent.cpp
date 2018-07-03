@@ -54,6 +54,8 @@ void SpriteComponent::SetAnimationParams(int fps, int numbFrames, float width, f
 	m_StartX = startX;
 	m_StartY = startY;
 
+	SetTextureRect(0, 0,int( width), int(height));
+
 }
 
 void SpriteComponent::CalculateAnimation(float elapsedSec)

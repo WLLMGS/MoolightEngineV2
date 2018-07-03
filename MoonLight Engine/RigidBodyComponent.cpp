@@ -80,8 +80,6 @@ void RigidBodyComponent::MakeBody()
 
 	m_pBody = world->CreateBody(&bd);
 
-	
-
 
 	if (m_IsBox)
 	{
@@ -118,7 +116,6 @@ void RigidBodyComponent::MakeBody()
 		fixtureDef.friction = m_Friction;
 		fixtureDef.restitution = m_Restitution;
 
-		//for (int i : m_CollisionGroups) fixtureDef.filter.groupIndex = int16(i);
 		fixtureDef.filter.categoryBits = m_Category;
 		fixtureDef.filter.maskBits = m_Mask;
 
@@ -132,11 +129,12 @@ void RigidBodyComponent::MakeBody()
 
 void RigidBodyComponent::RemakeBody()
 {
-	auto pos = m_pBody->GetPosition();
+	b2Vec2 pos = { 0,0 };
+	if(m_pBody) pos = m_pBody->GetPosition();
 
 	auto world = PhysicsManager::GetInstance()->GetWorld();
 
-	world->DestroyBody(m_pBody);
+	if(m_pBody)world->DestroyBody(m_pBody);
 
 	auto size = GameSettings::TILESIZE * m_Scale * 0.5f;
 
@@ -166,7 +164,6 @@ void RigidBodyComponent::RemakeBody()
 		fixtureDef.friction = m_Friction;
 		fixtureDef.restitution = m_Restitution;
 
-		//for (int i : m_CollisionGroups) fixtureDef.filter.groupIndex = int16(i);
 		fixtureDef.filter.categoryBits = m_Category;
 		fixtureDef.filter.maskBits = m_Mask;
 
@@ -186,7 +183,6 @@ void RigidBodyComponent::RemakeBody()
 		fixtureDef.friction = m_Friction;
 		fixtureDef.restitution = m_Restitution;
 
-		//for (int i : m_CollisionGroups) fixtureDef.filter.groupIndex = int16(i);
 		fixtureDef.filter.categoryBits = m_Category;
 		fixtureDef.filter.maskBits = m_Mask;
 
@@ -197,6 +193,6 @@ void RigidBodyComponent::RemakeBody()
 	m_pBody->SetUserData(m_pGameObject);
 
 	//set scale of rectangle
-	m_pGameObject->m_pRectangle->setSize({ size * 2, size * 2 });
-	m_pGameObject->m_pRectangle->setOrigin({ size, size });
+	if(m_pGameObject->m_pRectangle)m_pGameObject->m_pRectangle->setSize({ size * 2, size * 2 });
+	if(m_pGameObject->m_pRectangle)m_pGameObject->m_pRectangle->setOrigin({ size, size });
 }

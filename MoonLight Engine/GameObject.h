@@ -4,6 +4,8 @@
 #include "SpriteComponent.h"
 #include "ColliderComponent.h"
 
+class GameScene;
+
 class GameObject
 {
 public:
@@ -13,21 +15,25 @@ public:
 	void RootRender();
 	void RootLateUpdate();
 
-	virtual void LateUpdate(){};
+	void LateUpdate();
 
 	void AddComponent(BaseComponent* comp);
 	string GetTag() const;
 	void SetPosition(float x, float y);
 	void SetScale(float scale);
 	WG::Vector2 GetPosition();
-	virtual void OnCollision(GameObject* other) { (other); }; 
+	virtual void OnCollision(GameObject* other); 
 	void Destroy();
 	bool IsDestroyed() const;
+
+	void SetScene(GameScene* scene);
+	GameScene* GetScene() const;
+
 public:
 	template<class T> T* GetComponent()
 	{
 		const type_info& ti = typeid(T);
-		for (auto *component : m_pComponents)
+  		for (auto *component : m_pComponents)
 		{
 			if (component && typeid(*component) == ti)
 				return static_cast<T*>(component);
@@ -35,15 +41,16 @@ public:
 		return nullptr;
 	}
 
+	RectangleShape* m_pRectangle;
+	
 protected:
 	string m_Tag;
-	RectangleShape* m_pRectangle;
 	vector<GameObject*> m_CollisionEvents;
-
+	GameScene* m_pScene;
 private:
 	virtual void Update(float elapsedSec) { (elapsedSec); };
 	virtual void Render(){};
-
+	virtual void HandleCollision(GameObject* other) { (other); };
 	
 
 private:

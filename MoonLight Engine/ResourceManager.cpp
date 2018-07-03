@@ -35,6 +35,10 @@ ResourceManager::ResourceManager()
 	LoadTexture("dungeonTiles", "dungeonTileset.png");
 	LoadTexture("crate", "crate.jpg");
 	LoadTexture("wall_right_down", "topDownBuilding/corner_right_down.png");
+	LoadTexture("bullet_c", "bulletc.png");
+	LoadTexture("explosion", "explode1.png");
+
+
 }
 
 void ResourceManager::LoadTexture(string name, string path)

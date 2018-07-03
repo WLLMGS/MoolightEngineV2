@@ -1,14 +1,13 @@
 #include "stdafx.h"
 #include "GameObject.h"
 #include "RigidBodyComponent.h"
+#include "GameScene.h"
 
 GameObject::GameObject()
 {
 	m_pRectangle = new RectangleShape();
 	m_pRectangle->setSize({ 32.0f,32.0f });
 	m_pRectangle->setOrigin({ 16.0f,16.0f});
-
-
 }
 
 
@@ -43,6 +42,14 @@ void GameObject::RootLateUpdate()
 	LateUpdate();
 
 	m_CollisionEvents.clear();
+}
+
+void GameObject::LateUpdate()
+{
+	for(auto obj : m_CollisionEvents)
+	{
+		HandleCollision(obj);
+	}
 }
 
 void GameObject::AddComponent(BaseComponent* comp)
@@ -102,6 +109,11 @@ WG::Vector2 GameObject::GetPosition()
 
 }
 
+void GameObject::OnCollision(GameObject* other)
+{
+	m_CollisionEvents.push_back(other);
+}
+
 void GameObject::Destroy()
 {
 	m_IsDestroyed = true;
@@ -110,6 +122,16 @@ void GameObject::Destroy()
 bool GameObject::IsDestroyed() const
 {
 	return m_IsDestroyed;
+}
+
+void GameObject::SetScene(GameScene* scene)
+{
+	m_pScene = scene;
+}
+
+GameScene* GameObject::GetScene() const
+{
+	return m_pScene;
 }
 
 

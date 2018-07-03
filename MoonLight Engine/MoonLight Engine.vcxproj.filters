@@ -229,6 +229,11 @@
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="CratePrefab.h" />
+    <ClInclude Include="BulletPrefab.h" />
+    <ClInclude Include="BulletComponent.h" />
+    <ClInclude Include="ShootingComponent.h" />
+    <ClInclude Include="ExplosionObject.h" />
+    <ClInclude Include="DestroyComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameScene.cpp">
@@ -427,5 +432,10 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="CratePrefab.cpp" />
+    <ClCompile Include="BulletPrefab.cpp" />
+    <ClCompile Include="BulletComponent.cpp" />
+    <ClCompile Include="ShootingComponent.cpp" />
+    <ClCompile Include="ExplosionObject.cpp" />
+    <ClCompile Include="DestroyComponent.cpp" />
   </ItemGroup>
 </Project>

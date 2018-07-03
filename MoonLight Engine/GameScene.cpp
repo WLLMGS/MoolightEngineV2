@@ -69,7 +69,9 @@ void GameScene::RootRender()
 
 void GameScene::AddChild(GameObject* obj)
 {
+	
 	m_pObjects.push_back(obj);
+	obj->SetScene(this);
 }
 
 void GameScene::Destroy(GameObject* obj)

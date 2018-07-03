@@ -1,0 +1,23 @@
+#include "stdafx.h"
+#include "GameObject.h"
+#include "RigidBodyComponent.h"
+#include "BulletComponent.h"
+
+BulletComponent::BulletComponent(const float angle):
+m_Angle(angle)
+{
+	m_Velocity.x = cosf(angle) * Math::Rad2Deg * m_Speed;
+	m_Velocity.y = sinf(angle) * Math::Rad2Deg * m_Speed;
+}
+
+
+BulletComponent::~BulletComponent()
+{
+}
+
+void BulletComponent::Update(float )
+{
+	m_pRigid = m_pGameObject->GetComponent<RigidBodyComponent>();
+
+	m_pRigid->SetLinearVelocity(m_Velocity.x, m_Velocity.y);
+}
