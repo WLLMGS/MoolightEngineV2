@@ -21,9 +21,9 @@ PhysicsManager::~PhysicsManager()
 
 }
 
-void PhysicsManager::Update(float elapsedSec)
+void PhysicsManager::Update(float )
 {
-	m_pWorld->Step(elapsedSec , 1,1);
+	m_pWorld->Step((1.0f / 60.0f),6,2);
 }
 
 void PhysicsManager::CleanUp()

@@ -12,7 +12,6 @@ BulletPrefab::BulletPrefab(const float angle)
 		, CollisionGroup::MASK_PLAYER
 		, false, true);
 	AddComponent(rigid);
-	(angle);
 	auto bulletComp = new BulletComponent(angle);
 	AddComponent(bulletComp);
 

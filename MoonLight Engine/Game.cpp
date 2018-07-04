@@ -5,6 +5,7 @@
 #include "ResourceManager.h"
 #include "PhysicsManager.h"
 #include "MainMenu.h"
+#include <chrono>
 
 using namespace std;
 
@@ -16,6 +17,9 @@ Game::Game()
 	SceneManager::GetInstance()->AddScene(new MainMenu());
 	SceneManager::GetInstance()->AddScene(new DemoScene());
 	PhysicsManager::GetInstance()->GetWorld();
+
+	m_pWindow->setVerticalSyncEnabled(true);
+
 }
 
 void Game::Run()
@@ -26,9 +30,10 @@ void Game::Run()
 	bool isRunning = true;
 
 
+	
 	while (isRunning)
 	{
-		deltaTime = clock.restart().asSeconds();
+		deltaTime = float(clock.restart().asSeconds());
 
 		isRunning = ProcessEvents();
 		if (!isRunning) return;
@@ -56,8 +61,6 @@ bool Game::ProcessEvents()
 void Game::Update(float elapsedSec)
 {
 	SceneManager::GetInstance()->Update(elapsedSec);
-
-	//[IMPORTANT] update physics after everything else -> otherwise lag spikes may occur!!! :)
 	PhysicsManager::GetInstance()->Update(elapsedSec);
 }
 
