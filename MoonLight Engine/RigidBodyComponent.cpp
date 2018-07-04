@@ -73,10 +73,10 @@ void RigidBodyComponent::MakeBody()
 	b2BodyDef bd;
 	bd.type = (m_IsStatic) ? b2_staticBody : b2_dynamicBody;
 	bd.position.Set(0.0f, 0.0f);
-	bd.allowSleep = false;
-	bd.active = true;
+	//bd.allowSleep = false;
+	//bd.active = true;
 	bd.linearDamping = m_LinDamp;
-	bd.bullet = true;
+	//bd.bullet = true;
 
 	m_pBody = world->CreateBody(&bd);
 
@@ -142,10 +142,10 @@ void RigidBodyComponent::RemakeBody()
 	b2BodyDef bd;
 	bd.type = (m_IsStatic) ? b2_staticBody : b2_dynamicBody;
 	bd.position.Set(pos.x, pos.y);
-	bd.allowSleep = false;
-	bd.active = true;
+	//bd.allowSleep = false;
+	//bd.active = true;
 	bd.linearDamping = m_LinDamp;
-	bd.bullet = true;
+	//bd.bullet = true;
 
 	m_pBody = world->CreateBody(&bd);
 

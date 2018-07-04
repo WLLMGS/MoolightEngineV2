@@ -4,13 +4,16 @@
 #include "SceneManager.h"
 #include "ResourceManager.h"
 #include "PhysicsManager.h"
+#include "MainMenu.h"
 
 using namespace std;
 
-RenderWindow* Game::m_pWindow = new RenderWindow(VideoMode(1920, 1080), "ENGINE");
+RenderWindow* Game::m_pWindow = new RenderWindow(VideoMode::getDesktopMode(), "ENGINE", Style::Fullscreen);
+
 
 Game::Game() 
 {	
+	SceneManager::GetInstance()->AddScene(new MainMenu());
 	SceneManager::GetInstance()->AddScene(new DemoScene());
 	PhysicsManager::GetInstance()->GetWorld();
 }
@@ -52,8 +55,10 @@ bool Game::ProcessEvents()
 }
 void Game::Update(float elapsedSec)
 {
-	PhysicsManager::GetInstance()->Update(elapsedSec);
 	SceneManager::GetInstance()->Update(elapsedSec);
+
+	//[IMPORTANT] update physics after everything else -> otherwise lag spikes may occur!!! :)
+	PhysicsManager::GetInstance()->Update(elapsedSec);
 }
 
 void Game::Draw()

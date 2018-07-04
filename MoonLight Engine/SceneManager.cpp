@@ -37,3 +37,12 @@ void SceneManager::CleanUp()
 		scene = nullptr;
 	}
 }
+
+void SceneManager::NextScene()
+{
+	if(m_ActiveScene == m_pScenes.size() - 1)
+	{
+		m_ActiveScene = 0;
+	}
+	else m_ActiveScene++;
+}

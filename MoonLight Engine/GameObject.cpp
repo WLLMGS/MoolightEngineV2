@@ -74,6 +74,7 @@ void GameObject::SetPosition(float x, float y)
 	}
 
 	m_pRectangle->setPosition({ x,y });
+
 }
 
 void GameObject::SetScale(float scale)

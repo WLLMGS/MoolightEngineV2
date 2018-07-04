@@ -30,8 +30,7 @@ void ShootingComponent::Update(float elapsedSec)
 
 		float angle = Math::CalculateAngle(pos.x, pos.y, float(worldMouse.x), float(worldMouse.y));
 
-		cout << "ANGLE: " << angle << endl;
-
+		
 		auto bullet = new BulletPrefab(angle);
 	
 		bullet->SetPosition(m_pGameObject->GetPosition().x, m_pGameObject->GetPosition().y);

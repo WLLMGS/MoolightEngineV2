@@ -228,12 +228,34 @@
     <ClInclude Include="CustomContactListener.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="CratePrefab.h" />
-    <ClInclude Include="BulletPrefab.h" />
-    <ClInclude Include="BulletComponent.h" />
-    <ClInclude Include="ShootingComponent.h" />
-    <ClInclude Include="ExplosionObject.h" />
-    <ClInclude Include="DestroyComponent.h" />
+    <ClInclude Include="BulletComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="DestroyComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ShootingComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletPrefab.h">
+      <Filter>Prefabs</Filter>
+    </ClInclude>
+    <ClInclude Include="CratePrefab.h">
+      <Filter>Prefabs</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplosionObject.h">
+      <Filter>Prefabs</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="MousePrefab.h">
+      <Filter>Prefabs</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayButtonPrefab.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameScene.cpp">
@@ -431,11 +453,33 @@
     <ClCompile Include="CustomContactListener.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="CratePrefab.cpp" />
-    <ClCompile Include="BulletPrefab.cpp" />
-    <ClCompile Include="BulletComponent.cpp" />
-    <ClCompile Include="ShootingComponent.cpp" />
-    <ClCompile Include="ExplosionObject.cpp" />
-    <ClCompile Include="DestroyComponent.cpp" />
+    <ClCompile Include="BulletComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="DestroyComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ShootingComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletPrefab.cpp">
+      <Filter>Prefabs</Filter>
+    </ClCompile>
+    <ClCompile Include="CratePrefab.cpp">
+      <Filter>Prefabs</Filter>
+    </ClCompile>
+    <ClCompile Include="ExplosionObject.cpp">
+      <Filter>Prefabs</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="MousePrefab.cpp">
+      <Filter>Prefabs</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayButtonPrefab.cpp" />
   </ItemGroup>
 </Project>

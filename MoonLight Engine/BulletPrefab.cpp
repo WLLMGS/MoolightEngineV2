@@ -3,6 +3,7 @@
 #include "BulletComponent.h"
 #include "ExplosionObject.h"
 #include "GameScene.h"
+#include "DestroyComponent.h"
 
 
 BulletPrefab::BulletPrefab(const float angle)
@@ -20,10 +21,12 @@ BulletPrefab::BulletPrefab(const float angle)
 
 	auto sprite = new SpriteComponent();
 	AddComponent(sprite);
-	sprite->SetTexture("bullet_c");
+	sprite->SetTexture("bullet_c");  
 
 
 	m_pRectangle->setRotation(angle * Math::Rad2Deg);
+	
+	AddComponent(new DestroyComponent(2.0f));
 
 }
 

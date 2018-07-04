@@ -10,6 +10,9 @@
 #include "ColliderComponent.h"
 #include "CratePrefab.h"
 #include "SpriteComponent.h"
+#include "ButtonComponent.h"
+#include "MousePrefab.h"
+#include <ppltasks.h>
 
 DemoScene::DemoScene()
 {
@@ -24,24 +27,12 @@ DemoScene::DemoScene()
 	InputManager::GetInstance()->AddAction(GameSettings::Input::Right, Keyboard::D);
 	InputManager::GetInstance()->AddAction(GameSettings::Input::Left, Keyboard::Q);
 
-	m_Camera.Set(pPlayer, { 1920.0f,1080.0f}, 1.0f);
+	m_Camera.Set(pPlayer, { 1280.0f,720.0f}, 1.25f);
 
 	GenerateBuilding();
 
-
-
-	////test new wall
-	//auto obj = new GameObject();
-	//auto sprite = new SpriteComponent();
-	//obj->AddComponent(sprite);
-
-	//AddChild(obj);
-
-	//sprite->SetTexture("wall_right_down");
-
-	//obj->SetPosition(300, 300);
-	//obj->SetScale(2.0f);
-	
+	auto mouse = new MousePrefab();
+	AddChild(mouse);
 }
 
 

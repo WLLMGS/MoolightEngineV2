@@ -37,7 +37,8 @@ ResourceManager::ResourceManager()
 	LoadTexture("wall_right_down", "topDownBuilding/corner_right_down.png");
 	LoadTexture("bullet_c", "bulletc.png");
 	LoadTexture("explosion", "explode1.png");
-
+	LoadTexture("crosshair", "1crosshair.png");
+	LoadTexture("PlayButton", "PlayButton.png");
 
 }
 

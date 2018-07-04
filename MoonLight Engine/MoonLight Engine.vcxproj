@@ -197,6 +197,7 @@
     <ClInclude Include="Box2D\Dynamics\Joints\b2WheelJoint.h" />
     <ClInclude Include="Box2D\Rope\b2Rope.h" />
     <ClInclude Include="BulletPrefab.h" />
+    <ClInclude Include="ButtonComponent.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CratePrefab.h" />
     <ClInclude Include="CustomContactListener.h" />
@@ -208,9 +209,12 @@
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Maths.h" />
+    <ClInclude Include="MousePrefab.h" />
     <ClInclude Include="MoveComponent.h" />
     <ClInclude Include="PhysicsManager.h" />
+    <ClInclude Include="PlayButtonPrefab.h" />
     <ClInclude Include="PlayerPrefab.h" />
     <ClInclude Include="PlayerSpriteComponent.h" />
     <ClInclude Include="ResourceManager.h" />
@@ -272,6 +276,7 @@
     <ClCompile Include="Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
     <ClCompile Include="BulletPrefab.cpp" />
+    <ClCompile Include="ButtonComponent.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CratePrefab.cpp" />
     <ClCompile Include="CustomContactListener.cpp" />
@@ -283,8 +288,11 @@
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="MousePrefab.cpp" />
     <ClCompile Include="MoveComponent.cpp" />
     <ClCompile Include="PhysicsManager.cpp" />
+    <ClCompile Include="PlayButtonPrefab.cpp" />
     <ClCompile Include="PlayerPrefab.cpp" />
     <ClCompile Include="PlayerSpriteComponent.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
