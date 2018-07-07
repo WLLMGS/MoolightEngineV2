@@ -148,6 +148,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BackgroundPrefab.h" />
     <ClInclude Include="BaseComponent.h" />
     <ClInclude Include="Box2D\Box2D.h" />
     <ClInclude Include="Box2D\Collision\b2BroadPhase.h" />
@@ -203,11 +204,14 @@
     <ClInclude Include="CustomContactListener.h" />
     <ClInclude Include="DemoScene.h" />
     <ClInclude Include="DestroyComponent.h" />
+    <ClInclude Include="DungeonGenerator.h" />
     <ClInclude Include="ExplosionObject.h" />
+    <ClInclude Include="FloorPrefab.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameSettings.h" />
+    <ClInclude Include="HorizontalWallPrefab.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Maths.h" />
@@ -219,15 +223,18 @@
     <ClInclude Include="PlayerSpriteComponent.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="RigidBodyComponent.h" />
+    <ClInclude Include="RoomGenerator.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="BulletComponent.h" />
     <ClInclude Include="ShootingComponent.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="VerticalWallPrefab.h" />
     <ClInclude Include="WallPrefab.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BackgroundPrefab.cpp" />
     <ClCompile Include="BaseComponent.cpp" />
     <ClCompile Include="Box2D\Collision\b2BroadPhase.cpp" />
     <ClCompile Include="Box2D\Collision\b2CollideCircle.cpp" />
@@ -282,10 +289,13 @@
     <ClCompile Include="CustomContactListener.cpp" />
     <ClCompile Include="DemoScene.cpp" />
     <ClCompile Include="DestroyComponent.cpp" />
+    <ClCompile Include="DungeonGenerator.cpp" />
     <ClCompile Include="ExplosionObject.cpp" />
+    <ClCompile Include="FloorPrefab.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="HorizontalWallPrefab.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
@@ -297,6 +307,7 @@
     <ClCompile Include="PlayerSpriteComponent.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="RigidBodyComponent.cpp" />
+    <ClCompile Include="RoomGenerator.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="BulletComponent.cpp" />
     <ClCompile Include="ShootingComponent.cpp" />
@@ -307,6 +318,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="VerticalWallPrefab.cpp" />
     <ClCompile Include="WallPrefab.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

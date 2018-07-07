@@ -9,7 +9,7 @@
 
 using namespace std;
 
-RenderWindow* Game::m_pWindow = new RenderWindow(VideoMode::getDesktopMode(), "ENGINE", Style::Fullscreen);
+RenderWindow* Game::m_pWindow = new RenderWindow(VideoMode{3840,2160}, "ENGINE", Style::Fullscreen);
 
 
 Game::Game() 

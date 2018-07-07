@@ -3,6 +3,8 @@ namespace GameSettings
 {
 	const float TILESIZE = 32.0f;
 
+	const int ROOMSIZE = 7;
+
 	enum Input
 	{
 		Right, Left, Up, Down

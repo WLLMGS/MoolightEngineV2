@@ -29,19 +29,8 @@ GameScene::~GameScene()
 void GameScene::RootUpdate(float elapsedSec)
 {
 	m_Camera.Update();
-
-	//UI
-	for (size_t t{}; t < m_UI.size(); ++t)
-	{
-		auto obj = m_UI[t];
-
-		if (obj->IsDestroyed())
-		{
-			DestroyUI(obj);
-		}
-		else obj->RootUpdate(elapsedSec);
-
-	}
+	m_Camera.Draw();
+	
 
 	//UPDATE GAMEOBJECTS
 	for(size_t t{}; t < m_pObjects.size(); ++t)
@@ -71,14 +60,6 @@ void GameScene::RootUpdate(float elapsedSec)
 
 void GameScene::RootRender()
 {
-	//render UI
-	Game::m_pWindow->setView(Game::m_pWindow->getDefaultView());
-	for (auto ui : m_UI)
-	{
-		ui->RootRender();
-	}
-
-
 	m_Camera.Draw();
 
 	//render all game objects
@@ -87,9 +68,32 @@ void GameScene::RootRender()
 		obj->RootRender();
 	}
 
-	Render();
+	//Render();
+}
 
-	
+void GameScene::RenderUI()
+{
+	Game::m_pWindow->setView(Game::m_pWindow->getDefaultView());
+	for (auto ui : m_UI)
+	{
+		ui->RootRender();
+	}
+}
+
+void GameScene::UpdateUI(float elapsedSec)
+{
+	//UI
+	for (size_t t{}; t < m_UI.size(); ++t)
+	{
+		auto obj = m_UI[t];
+
+		if (obj->IsDestroyed())
+		{
+			DestroyUI(obj);
+		}
+		else obj->RootUpdate(elapsedSec);
+
+	}
 }
 
 void GameScene::AddChild(GameObject* obj)

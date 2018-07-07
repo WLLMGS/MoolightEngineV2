@@ -10,14 +10,15 @@ public:
 	virtual void Update(float elapsedSec) override;
 	void SetTexture(string name);
 	void SetTextureRect(int x, int y, int w, int h);
+	void SetRepeated(bool repeated);
 	void SetAnimated(bool isAnimated);
 	void SetAnimationParams(int fps, int numbFrames
 		, float width, float height
 		,float startX
 		, float startY);
 private:
+	Texture* m_pTexture = nullptr;
 	bool m_IsAnimated = false;
-
 	//anim param
 	int m_FPS = 0;
 	int m_NumberOfFrames = 0;

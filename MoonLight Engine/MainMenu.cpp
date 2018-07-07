@@ -4,17 +4,21 @@
 #include "SceneManager.h"
 #include "MousePrefab.h"
 #include "PlayButtonPrefab.h"
+#include "BackgroundPrefab.h"
 
 
 MainMenu::MainMenu()
 {
+	AddChild(new BackgroundPrefab());
+
 	AddChild(new MousePrefab());
 
+	auto windowSize = Game::m_pWindow->getSize();
 
 	auto playButtonprefab = new PlayButtonPrefab();
 	AddUIElement(playButtonprefab);
 
-	playButtonprefab->SetPosition(800.0f, 800.0f);
+	playButtonprefab->SetPosition(windowSize.x / 2.0f, windowSize.y / 2.0f);
 }
 
 

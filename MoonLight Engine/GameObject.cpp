@@ -5,9 +5,10 @@
 
 GameObject::GameObject()
 {
+	m_Size = { GameSettings::TILESIZE, GameSettings::TILESIZE };
 	m_pRectangle = new RectangleShape();
-	m_pRectangle->setSize({ 32.0f,32.0f });
-	m_pRectangle->setOrigin({ 16.0f,16.0f});
+	m_pRectangle->setSize(m_Size);
+	m_pRectangle->setOrigin(m_Size / 2.0f);
 }
 
 
@@ -77,8 +78,17 @@ void GameObject::SetPosition(float x, float y)
 
 }
 
+void GameObject::Translate(float x, float y)
+{
+	float dx = x + m_pRectangle->getPosition().x;
+	float dy = y + m_pRectangle->getPosition().y;
+
+	SetPosition(dx, dy);
+}
+
 void GameObject::SetScale(float scale)
 {
+	m_Scale = scale;
 	auto rigid = GetComponent<RigidBodyComponent>();
 	if(rigid)
 	{
@@ -86,9 +96,14 @@ void GameObject::SetScale(float scale)
 		return;
 	}
 
-	m_pRectangle->setSize({ scale * GameSettings::TILESIZE, scale*GameSettings::TILESIZE });
+	m_pRectangle->setSize({ scale * m_Size.x, scale* m_Size.y });
 	m_pRectangle->setOrigin(m_pRectangle->getSize() / 2.0f);
 
+}
+
+float GameObject::GetScale() const
+{
+	return m_Scale;
 }
 
 WG::Vector2 GameObject::GetPosition()
@@ -133,6 +148,23 @@ void GameObject::SetScene(GameScene* scene)
 GameScene* GameObject::GetScene() const
 {
 	return m_pScene;
+}
+
+void GameObject::SetSize(float x, float y)
+{
+	m_Size.x = x;
+	m_Size.y = y;
+
+	m_pRectangle->setSize(m_Size);
+	m_pRectangle->setOrigin(m_Size / 2.0f);
+
+
+	SetScale(m_Scale);
+}
+
+Vector2f GameObject::GetOriginalSize()
+{
+	return m_Size;
 }
 
 

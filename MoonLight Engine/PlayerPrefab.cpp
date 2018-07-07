@@ -7,14 +7,11 @@
 
 PlayerPrefab::PlayerPrefab()
 {
-	/*auto sprite = new PlayerSpriteComponent();
+	auto sprite = new PlayerSpriteComponent();
 	AddComponent(sprite);
-	sprite->Init();*/
+	sprite->Init();
 	
-	auto sprite = new SpriteComponent();
-	AddComponent(sprite);
-	sprite->SetTexture("crate");
-
+	
 	AddComponent(new MoveComponent());
 	//AddComponent(new ColliderComponent());
 	auto rigid = new RigidBodyComponent(CollisionGroup::CATEGORY_PLAYER, CollisionGroup::MASK_PLAYER, false, false, 0.01f, 1.0f, 1.0f, 0.1f);
@@ -23,9 +20,9 @@ PlayerPrefab::PlayerPrefab()
 	SetScale(1.75f);
 
 	
-	/*auto shootingComp = new ShootingComponent();
+	auto shootingComp = new ShootingComponent();
 	AddComponent(shootingComp);
-*/
+
 }
 
 

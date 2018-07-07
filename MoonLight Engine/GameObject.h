@@ -20,7 +20,9 @@ public:
 	void AddComponent(BaseComponent* comp);
 	string GetTag() const;
 	void SetPosition(float x, float y);
+	void Translate(float x, float y);
 	void SetScale(float scale);
+	float GetScale() const;
 	WG::Vector2 GetPosition();
 	virtual void OnCollision(GameObject* other); 
 	void Destroy();
@@ -28,6 +30,9 @@ public:
 
 	void SetScene(GameScene* scene);
 	GameScene* GetScene() const;
+
+	void SetSize(float x, float y);
+	Vector2f GetOriginalSize();
 
 public:
 	template<class T> T* GetComponent()
@@ -47,6 +52,9 @@ protected:
 	string m_Tag;
 	vector<GameObject*> m_CollisionEvents;
 	GameScene* m_pScene;
+	float m_Scale = 1;
+
+	Vector2f m_Size;
 private:
 	virtual void Update(float elapsedSec) { (elapsedSec); };
 	virtual void Render(){};

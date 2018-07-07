@@ -17,11 +17,15 @@ SceneManager::~SceneManager()
 void SceneManager::Update(float elapsedSec)
 {
 	m_pScenes[m_ActiveScene]->RootUpdate(elapsedSec);
+
+	m_pScenes[m_ActiveScene]->UpdateUI(elapsedSec);
+
 }
 
 void SceneManager::Render()
 {
 	m_pScenes[m_ActiveScene]->RootRender();
+	m_pScenes[m_ActiveScene]->RenderUI();
 }
 
 void SceneManager::AddScene(GameScene* scene)

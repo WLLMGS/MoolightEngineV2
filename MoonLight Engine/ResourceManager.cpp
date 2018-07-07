@@ -39,6 +39,11 @@ ResourceManager::ResourceManager()
 	LoadTexture("explosion", "explode1.png");
 	LoadTexture("crosshair", "1crosshair.png");
 	LoadTexture("PlayButton", "PlayButton.png");
+	LoadTexture("PlayButton_hover", "PlayButton_hover.png");
+	LoadTexture("wall_top", "wall_uniform.png");
+	LoadTexture("wall_bottom", "wall_bottom_1.png");
+	LoadTexture("wall_side", "wall_side_1.png");
+	LoadTexture("floor_wood", "floor_wood.png");
 
 }
 

@@ -13,23 +13,45 @@
 #include "ButtonComponent.h"
 #include "MousePrefab.h"
 #include <ppltasks.h>
+#include "RoomGenerator.h"
+#include "DungeonGenerator.h"
+#include "BackgroundPrefab.h"
+#include "HorizontalWallPrefab.h"
+#include "VerticalWallPrefab.h"
 
 DemoScene::DemoScene()
 {
-	pPlayer = new PlayerPrefab();
 
-	AddChild(pPlayer);
+	auto bg = new BackgroundPrefab();
+	AddChild(bg);
 
-	pPlayer->SetPosition(300, 500);
+	
+
+	
 
 	InputManager::GetInstance()->AddAction(GameSettings::Input::Up, Keyboard::Z);
 	InputManager::GetInstance()->AddAction(GameSettings::Input::Down, Keyboard::S);
 	InputManager::GetInstance()->AddAction(GameSettings::Input::Right, Keyboard::D);
 	InputManager::GetInstance()->AddAction(GameSettings::Input::Left, Keyboard::Q);
 
-	m_Camera.Set(pPlayer, { 1280.0f,720.0f}, 1.25f);
+	
 
-	GenerateBuilding();
+
+	
+
+	
+	DungeonGenerator::GenerateDungeon(this, 7, 7);
+
+
+
+	pPlayer = new PlayerPrefab();
+	
+	AddChild(pPlayer);
+	pPlayer->SetPosition(DungeonGenerator::GetSpawnPos().x, DungeonGenerator::GetSpawnPos().y);
+
+
+	m_Camera.Set(pPlayer, { 1280.0f,720.0f }, 1.25f);
+
 
 	auto mouse = new MousePrefab();
 	AddChild(mouse);

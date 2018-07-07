@@ -18,6 +18,5 @@ BulletComponent::~BulletComponent()
 void BulletComponent::Update(float )
 {
 	m_pRigid = m_pGameObject->GetComponent<RigidBodyComponent>();
-
 	m_pRigid->SetLinearVelocity(m_Velocity.x, m_Velocity.y);
 }

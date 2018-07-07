@@ -28,15 +28,20 @@ void SpriteComponent::Update(float elapsedSec)
 
 void SpriteComponent::SetTexture(string name)
 {
-	auto t = ResourceManager::GetInstance()->RequestTexture(name);
+	m_pTexture = ResourceManager::GetInstance()->RequestTexture(name);
 
-	if(t) m_pGameObject->m_pRectangle->setTexture(t);
+	if(m_pTexture) m_pGameObject->m_pRectangle->setTexture(m_pTexture);
 	else cout << "could not load texture!" << endl;
 }
 
 void SpriteComponent::SetTextureRect(int x, int y, int w, int h)
 {
 	m_pGameObject->m_pRectangle->setTextureRect({ x, y, w, h });
+}
+
+void SpriteComponent::SetRepeated(bool repeated)
+{
+	m_pTexture->setRepeated(repeated);
 }
 
 void SpriteComponent::SetAnimated(bool isAnimated)

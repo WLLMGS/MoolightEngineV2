@@ -13,7 +13,7 @@ PlayButtonPrefab::PlayButtonPrefab()
 	AddComponent(sprite);
 	sprite->SetTexture("PlayButton");
 
-	auto buttonComp = new ButtonComponent();
+	auto buttonComp = new ButtonComponent("PlayButton", "PlayButton_hover");
 	buttonComp->OnClick([]()
 	{
 		SceneManager::GetInstance()->NextScene();

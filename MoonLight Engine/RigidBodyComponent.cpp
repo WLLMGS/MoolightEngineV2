@@ -136,7 +136,8 @@ void RigidBodyComponent::RemakeBody()
 
 	if(m_pBody)world->DestroyBody(m_pBody);
 
-	auto size = GameSettings::TILESIZE * m_Scale * 0.5f;
+	
+	auto size = m_pGameObject->GetOriginalSize() * m_Scale * 0.5f;
 
 
 	b2BodyDef bd;
@@ -155,7 +156,7 @@ void RigidBodyComponent::RemakeBody()
 	{
 		//box shape
 		b2PolygonShape shape;
-		shape.SetAsBox(size, size);
+		shape.SetAsBox(size.x, size.y);
 		
 		//fixture
 		b2FixtureDef fixtureDef;
@@ -174,7 +175,7 @@ void RigidBodyComponent::RemakeBody()
 		//circle shape
 		b2CircleShape circle;
 		circle.m_p.Set(0, 0);
-		circle.m_radius = size;
+		circle.m_radius = size.x;
 
 		//fixture
 		b2FixtureDef fixtureDef;
@@ -193,6 +194,6 @@ void RigidBodyComponent::RemakeBody()
 	m_pBody->SetUserData(m_pGameObject);
 
 	//set scale of rectangle
-	if(m_pGameObject->m_pRectangle)m_pGameObject->m_pRectangle->setSize({ size * 2, size * 2 });
-	if(m_pGameObject->m_pRectangle)m_pGameObject->m_pRectangle->setOrigin({ size, size });
+	if(m_pGameObject->m_pRectangle)m_pGameObject->m_pRectangle->setSize({ size.x * 2, size.y * 2 });
+	if(m_pGameObject->m_pRectangle)m_pGameObject->m_pRectangle->setOrigin(size);
 }

@@ -255,7 +255,15 @@
     <ClInclude Include="MousePrefab.h">
       <Filter>Prefabs</Filter>
     </ClInclude>
-    <ClInclude Include="PlayButtonPrefab.h" />
+    <ClInclude Include="PlayButtonPrefab.h">
+      <Filter>Prefabs</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomGenerator.h" />
+    <ClInclude Include="DungeonGenerator.h" />
+    <ClInclude Include="BackgroundPrefab.h" />
+    <ClInclude Include="HorizontalWallPrefab.h" />
+    <ClInclude Include="VerticalWallPrefab.h" />
+    <ClInclude Include="FloorPrefab.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameScene.cpp">
@@ -480,6 +488,14 @@
     <ClCompile Include="MousePrefab.cpp">
       <Filter>Prefabs</Filter>
     </ClCompile>
-    <ClCompile Include="PlayButtonPrefab.cpp" />
+    <ClCompile Include="PlayButtonPrefab.cpp">
+      <Filter>Prefabs</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomGenerator.cpp" />
+    <ClCompile Include="DungeonGenerator.cpp" />
+    <ClCompile Include="BackgroundPrefab.cpp" />
+    <ClCompile Include="HorizontalWallPrefab.cpp" />
+    <ClCompile Include="VerticalWallPrefab.cpp" />
+    <ClCompile Include="FloorPrefab.cpp" />
   </ItemGroup>
 </Project>

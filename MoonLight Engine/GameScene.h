@@ -9,7 +9,10 @@ public:
 	GameScene();
 	~GameScene();
 	void RootUpdate(float elapsedSec);
+	void UpdateUI(float elapsedSec);
 	void RootRender(); 
+	void RenderUI();
+	
 	void AddChild(GameObject* obj);
 	void AddUIElement(GameObject* obj);
 
@@ -18,6 +21,7 @@ protected:
 private:
 	virtual void Update(float elapsedSec) = 0;
 	virtual void Render() = 0;
+
 private:
 	vector<GameObject*> m_pObjects;
 	vector<GameObject*> m_UI;
