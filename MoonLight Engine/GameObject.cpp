@@ -14,9 +14,14 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
-	delete m_pRectangle;
-	m_pRectangle = nullptr;
-
+	
+	if(m_pRectangle)
+	{
+		delete m_pRectangle;
+		m_pRectangle = nullptr;
+	}
+	
+	
 	for(auto comp : m_pComponents)
 	{
 		delete comp;
@@ -44,6 +49,14 @@ void GameObject::RootLateUpdate()
 
 	m_CollisionEvents.clear();
 }
+
+void GameObject::RootInit()
+{
+	for (auto comp : m_pComponents) comp->Init();
+
+	Init();
+}
+
 
 void GameObject::LateUpdate()
 {
@@ -165,6 +178,11 @@ void GameObject::SetSize(float x, float y)
 Vector2f GameObject::GetOriginalSize()
 {
 	return m_Size;
+}
+
+string GameObject::GetName() const
+{
+	return m_Name;
 }
 
 

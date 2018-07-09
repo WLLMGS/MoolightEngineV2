@@ -44,7 +44,8 @@ ResourceManager::ResourceManager()
 	LoadTexture("wall_bottom", "wall_bottom_1.png");
 	LoadTexture("wall_side", "wall_side_1.png");
 	LoadTexture("floor_wood", "floor_wood.png");
-
+	LoadTexture("flame_bullet", "flame_bullet.png");
+	LoadTexture("zombie_walk", "zombie_walk.png");
 }
 
 void ResourceManager::LoadTexture(string name, string path)

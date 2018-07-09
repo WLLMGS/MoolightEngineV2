@@ -3,6 +3,7 @@
 #include "WallPrefab.h"
 #include "GameScene.h"
 #include "FloorPrefab.h"
+#include "ZombiePrefab.h"
 
 RoomGenerator::RoomGenerator()
 {
@@ -66,8 +67,34 @@ void RoomGenerator::AddRoom(GameScene* scene, const float x, const float y, Door
 		}
 	}
 
+	float centerX = width * 0.5f * tilesize + x;
+	float centerY = width * 0.5f * tilesize + y;
 
 
+	auto zombie = new ZombiePrefab();
+	zombie->SetPosition(centerX, centerY);
+	scene->AddChild(zombie);
+
+	zombie = new ZombiePrefab();
+	zombie->SetPosition(centerX - 1.0f, centerY);
+	scene->AddChild(zombie);
+
+	zombie = new ZombiePrefab();
+	zombie->SetPosition(centerX + 1.0f, centerY);
+	scene->AddChild(zombie);
+
+
+	zombie = new ZombiePrefab();
+	zombie->SetPosition(centerX, centerY + 1.0f);
+	scene->AddChild(zombie);
+
+	zombie = new ZombiePrefab();
+	zombie->SetPosition(centerX - 1.0f, centerY + 1.0f);
+	scene->AddChild(zombie);
+
+	zombie = new ZombiePrefab();
+	zombie->SetPosition(centerX + 1.0f, centerY + 1.0f);
+	scene->AddChild(zombie);
 
 }
 

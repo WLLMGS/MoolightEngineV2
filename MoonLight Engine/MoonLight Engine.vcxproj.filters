@@ -264,6 +264,10 @@
     <ClInclude Include="HorizontalWallPrefab.h" />
     <ClInclude Include="VerticalWallPrefab.h" />
     <ClInclude Include="FloorPrefab.h" />
+    <ClInclude Include="FlameSpellPrefab.h" />
+    <ClInclude Include="ZombiePrefab.h" />
+    <ClInclude Include="ZombieControllerComponent.h" />
+    <ClInclude Include="HealthComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameScene.cpp">
@@ -497,5 +501,9 @@
     <ClCompile Include="HorizontalWallPrefab.cpp" />
     <ClCompile Include="VerticalWallPrefab.cpp" />
     <ClCompile Include="FloorPrefab.cpp" />
+    <ClCompile Include="FlameSpellPrefab.cpp" />
+    <ClCompile Include="ZombiePrefab.cpp" />
+    <ClCompile Include="ZombieControllerComponent.cpp" />
+    <ClCompile Include="HealthComponent.cpp" />
   </ItemGroup>
 </Project>

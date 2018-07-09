@@ -6,8 +6,8 @@ public:
 	DemoScene();
 	~DemoScene();
 private:
-	virtual void Update(float elapsedSec) override;
-	virtual void Render() override;
+	virtual void Update(float ) override{};
+	virtual void Render() override{};
 
 private:
 	GameObject* pPlayer;
@@ -19,6 +19,6 @@ private:
 		Up, Down, Right, Left
 	};
 
-	void GenerateBuilding();
+	
 };
 

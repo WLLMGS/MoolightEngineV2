@@ -4,11 +4,6 @@
 
 GameScene::GameScene()
 {
-	for(auto obj : m_pObjects)
-	{
-		delete obj;
-		obj = nullptr;
-	}
 }
 
 
@@ -46,14 +41,21 @@ void GameScene::RootUpdate(float elapsedSec)
 	}
 
 	//LATE UPDATE
-	for(auto obj : m_pObjects)
+	for(size_t t{}; t < m_pObjects.size(); ++t)
 	{
+		auto obj = m_pObjects[t];
+
+
 		if(!obj->IsDestroyed())	obj->RootLateUpdate();
-		else
+		/*else
 		{
 			Destroy(obj);
-		}
+		}*/
 	}
+
+
+	m_Mouse.RootUpdate(elapsedSec);
+
 
 	Update(elapsedSec);
 }
@@ -80,6 +82,20 @@ void GameScene::RenderUI()
 	}
 }
 
+void GameScene::Init()
+{
+	for(auto obj : m_pObjects)
+	{
+		obj->RootInit();
+	}
+}
+
+void GameScene::RenderMouse()
+{
+	m_Camera.Draw();
+	m_Mouse.RootRender();
+}
+
 void GameScene::UpdateUI(float elapsedSec)
 {
 	//UI
@@ -98,15 +114,35 @@ void GameScene::UpdateUI(float elapsedSec)
 
 void GameScene::AddChild(GameObject* obj)
 {
-	
-	m_pObjects.push_back(obj);
 	obj->SetScene(this);
+	m_pObjects.push_back(obj);
 }
 
 void GameScene::AddUIElement(GameObject* obj)
 {
 	obj->SetScene(this);
 	m_UI.push_back(obj);
+}
+
+GameObject* GameScene::FindGameObjectByName(string name)
+{
+	for(auto obj : m_pObjects)
+	{
+		if (obj->GetName() == name) return obj;
+	}
+	return nullptr;
+}
+
+vector<GameObject*> GameScene::FindGameObjectsByName(string name)
+{
+	vector<GameObject*> results;
+
+	for(auto obj : m_pObjects)
+	{
+		if (obj->GetName() == name) results.push_back(obj);
+	}
+
+	return results;
 }
 
 void GameScene::Destroy(GameObject* obj)

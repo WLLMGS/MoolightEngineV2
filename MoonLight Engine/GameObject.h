@@ -15,6 +15,9 @@ public:
 	void RootRender();
 	void RootLateUpdate();
 
+	void RootInit();
+	
+
 	void LateUpdate();
 
 	void AddComponent(BaseComponent* comp);
@@ -33,7 +36,7 @@ public:
 
 	void SetSize(float x, float y);
 	Vector2f GetOriginalSize();
-
+	string GetName() const;
 public:
 	template<class T> T* GetComponent()
 	{
@@ -50,6 +53,7 @@ public:
 	
 protected:
 	string m_Tag;
+	string m_Name = "Default";
 	vector<GameObject*> m_CollisionEvents;
 	GameScene* m_pScene;
 	float m_Scale = 1;
@@ -59,7 +63,7 @@ private:
 	virtual void Update(float elapsedSec) { (elapsedSec); };
 	virtual void Render(){};
 	virtual void HandleCollision(GameObject* other) { (other); };
-	
+	virtual void Init(){};
 
 private:
 	friend class SpriteComponent;

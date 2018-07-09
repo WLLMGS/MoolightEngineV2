@@ -52,16 +52,32 @@ void DungeonGenerator::GenerateMap(int width, int height)
 	//first quadrant
 	int qx = rand() % (width / 2);
 	int qy = rand() % (height / 2);
-	m_Map[qy * width + qx] = SpecialRoom;
+	m_Map[qy * width + qx] = StartRoom;
 	
 	if(rand() % 2 == 1)	ConnectToCenterAlternate(qx, qy, width, height);
 	else ConnectToCenter(qx, qy, width, height);
+
+
+	qx = rand() % (width / 2);
+	qy = rand() % (height / 2);
+	m_Map[qy * width + qx] = SpecialRoom;
+
+	if (rand() % 2 == 1)	ConnectToCenterAlternate(qx, qy, width, height);
+	else ConnectToCenter(qx, qy, width, height);
+
 	
 	//second quadrant
 	qx = rand() % (width / 2) + (width / 2 + 1);
 	qy = rand() % (height / 2);
 	m_Map[qy * width + qx] = SpecialRoom;
 	
+	if (rand() % 2 == 1)	ConnectToCenterAlternate(qx, qy, width, height);
+	else ConnectToCenter(qx, qy, width, height);
+
+	qx = rand() % (width / 2) + (width / 2 + 1);
+	qy = rand() % (height / 2);
+	m_Map[qy * width + qx] = SpecialRoom;
+
 	if (rand() % 2 == 1)	ConnectToCenterAlternate(qx, qy, width, height);
 	else ConnectToCenter(qx, qy, width, height);
 	
@@ -72,12 +88,26 @@ void DungeonGenerator::GenerateMap(int width, int height)
 	
 	if (rand() % 2 == 1)	ConnectToCenterAlternate(qx, qy, width, height);
 	else ConnectToCenter(qx, qy, width, height);
+
+	qx = rand() % (width / 2);
+	qy = rand() % (height / 2) + (height / 2 + 1);
+	m_Map[qy * width + qx] = SpecialRoom;
+
+	if (rand() % 2 == 1)	ConnectToCenterAlternate(qx, qy, width, height);
+	else ConnectToCenter(qx, qy, width, height);
 	
 	//fourth quadrant
 	qx = rand() % (width / 2) + (width / 2 + 1);
 	qy = rand() % (height / 2) + (height / 2 + 1);
 	m_Map[qy * width + qx] = SpecialRoom;
 	
+	if (rand() % 2 == 1)	ConnectToCenterAlternate(qx, qy, width, height);
+	else ConnectToCenter(qx, qy, width, height);
+
+	qx = rand() % (width / 2) + (width / 2 + 1);
+	qy = rand() % (height / 2) + (height / 2 + 1);
+	m_Map[qy * width + qx] = SpecialRoom;
+
 	if (rand() % 2 == 1)	ConnectToCenterAlternate(qx, qy, width, height);
 	else ConnectToCenter(qx, qy, width, height);
 	
@@ -197,7 +227,6 @@ void DungeonGenerator::AddRoomsToScene(GameScene* scene, int width, int height)
 			{
 				RoomGenerator::AddFloor(scene, roomSize * x, roomSize * y);
 			}
-
 		}
 	}
 	
@@ -222,7 +251,7 @@ void DungeonGenerator::AddRoomsToScene(GameScene* scene, int width, int height)
 				//add room
 				RoomGenerator::AddRoom(scene, roomSize * x, roomSize * y, d);
 
-				if(index == CenterRoom)
+				if(index == SpecialRoom)
 				{
 					m_SpawnPos.x = roomSize * x + roomSize / 2.0f;
 					m_SpawnPos.y = roomSize * y + roomSize / 2.0f;

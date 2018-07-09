@@ -4,7 +4,7 @@
 #include "GameObject.h"
 
 
-RigidBodyComponent::RigidBodyComponent(short category, short mask, bool isStatic, bool isBox,  float linearDamp, float density, float friction, float restitution)
+RigidBodyComponent::RigidBodyComponent(short category, short mask,bool smaller, bool isStatic, bool isBox,  float linearDamp, float density, float friction, float restitution)
 {
 	m_IsStatic = isStatic;
 	m_IsBox = isBox;
@@ -14,6 +14,7 @@ RigidBodyComponent::RigidBodyComponent(short category, short mask, bool isStatic
 	m_Restitution = restitution;
 	m_Category = category;
 	m_Mask = mask;
+	m_IsSmaller = smaller;
 
 	MakeBody();
 }
@@ -136,8 +137,7 @@ void RigidBodyComponent::RemakeBody()
 
 	if(m_pBody)world->DestroyBody(m_pBody);
 
-	
-	auto size = m_pGameObject->GetOriginalSize() * m_Scale * 0.5f;
+	auto size =(m_IsSmaller) ? m_pGameObject->GetOriginalSize() * m_Scale * 0.33f : m_pGameObject->GetOriginalSize() * m_Scale * 0.5f;
 
 
 	b2BodyDef bd;
@@ -194,6 +194,6 @@ void RigidBodyComponent::RemakeBody()
 	m_pBody->SetUserData(m_pGameObject);
 
 	//set scale of rectangle
-	if(m_pGameObject->m_pRectangle)m_pGameObject->m_pRectangle->setSize({ size.x * 2, size.y * 2 });
-	if(m_pGameObject->m_pRectangle)m_pGameObject->m_pRectangle->setOrigin(size);
+	if(m_pGameObject->m_pRectangle)m_pGameObject->m_pRectangle->setSize({ m_pGameObject->GetOriginalSize().x * m_Scale, m_pGameObject->GetOriginalSize().y * m_Scale });
+	if(m_pGameObject->m_pRectangle)m_pGameObject->m_pRectangle->setOrigin(m_pGameObject->m_pRectangle->getSize() / 2.0f);
 }

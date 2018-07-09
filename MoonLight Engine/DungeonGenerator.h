@@ -6,7 +6,9 @@ enum RoomCode
 {
 	SpecialRoom = 1,
 	CenterRoom = 2,
-	Hallway = 3
+	Hallway = 3,
+	StartRoom = 4
+
 };
 
 

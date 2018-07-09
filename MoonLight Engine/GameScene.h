@@ -1,5 +1,6 @@
 #pragma once
 #include "Camera.h"
+#include "MousePrefab.h"
 
 class GameObject;
 
@@ -13,11 +14,20 @@ public:
 	void RootRender(); 
 	void RenderUI();
 	
+	void Init();
+
+	void RenderMouse();
+
 	void AddChild(GameObject* obj);
 	void AddUIElement(GameObject* obj);
 
+	GameObject* FindGameObjectByName(string name);
+	vector<GameObject*> FindGameObjectsByName(string name);
+
 protected:
 	Camera m_Camera;
+	MousePrefab m_Mouse;
+
 private:
 	virtual void Update(float elapsedSec) = 0;
 	virtual void Render() = 0;
@@ -25,7 +35,6 @@ private:
 private:
 	vector<GameObject*> m_pObjects;
 	vector<GameObject*> m_UI;
-
 private:
 	void Destroy(GameObject* obj);
 	void DestroyUI(GameObject* ui);

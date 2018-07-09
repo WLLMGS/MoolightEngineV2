@@ -11,7 +11,7 @@ CratePrefab::CratePrefab()
 	auto rigid = new RigidBodyComponent(
 		CollisionGroup::CATEGORY_ENEMY
 		, CollisionGroup::MASK_ENEMY
-		, false, true, 5, 5, 5, 0
+		,false , false, true, 5, 5, 5, 0
 	);
 
 	AddComponent(rigid);

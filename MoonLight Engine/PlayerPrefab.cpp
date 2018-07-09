@@ -14,7 +14,7 @@ PlayerPrefab::PlayerPrefab()
 	
 	AddComponent(new MoveComponent());
 	//AddComponent(new ColliderComponent());
-	auto rigid = new RigidBodyComponent(CollisionGroup::CATEGORY_PLAYER, CollisionGroup::MASK_PLAYER, false, false, 0.01f, 1.0f, 1.0f, 0.1f);
+	auto rigid = new RigidBodyComponent(CollisionGroup::CATEGORY_PLAYER, CollisionGroup::MASK_PLAYER, true, false, false, 0.01f, 1.0f, 1.0f, 0.1f);
 	AddComponent(rigid);
 
 	SetScale(1.75f);
@@ -22,6 +22,9 @@ PlayerPrefab::PlayerPrefab()
 	
 	auto shootingComp = new ShootingComponent();
 	AddComponent(shootingComp);
+
+
+	m_Name = "Player";
 
 }
 

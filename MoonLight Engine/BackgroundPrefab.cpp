@@ -7,7 +7,7 @@ BackgroundPrefab::BackgroundPrefab()
 	auto sprite = new SpriteComponent();
 	AddComponent(sprite);
 	sprite->SetTexture("dungeonTiles");
-	sprite->SetTextureRect(32, 48, 16, 16);
+	sprite->SetTextureRect(64, 96, 16, 16);
 
 	SetScale(1000.0f);
 }

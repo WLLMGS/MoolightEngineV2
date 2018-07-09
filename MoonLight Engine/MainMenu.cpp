@@ -11,7 +11,7 @@ MainMenu::MainMenu()
 {
 	AddChild(new BackgroundPrefab());
 
-	AddChild(new MousePrefab());
+	//AddChild(new MousePrefab());
 
 	auto windowSize = Game::m_pWindow->getSize();
 

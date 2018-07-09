@@ -20,3 +20,10 @@ void BulletComponent::Update(float )
 	m_pRigid = m_pGameObject->GetComponent<RigidBodyComponent>();
 	m_pRigid->SetLinearVelocity(m_Velocity.x, m_Velocity.y);
 }
+
+void BulletComponent::SetSpeed(float speed)
+{
+	m_Speed = speed;
+	m_Velocity.x = cosf(m_Angle) * Math::Rad2Deg * m_Speed;
+	m_Velocity.y = sinf(m_Angle) * Math::Rad2Deg * m_Speed;
+}

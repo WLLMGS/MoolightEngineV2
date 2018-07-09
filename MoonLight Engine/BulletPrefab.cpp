@@ -6,26 +6,27 @@
 #include "DestroyComponent.h"
 
 
-BulletPrefab::BulletPrefab(const float angle)
+BulletPrefab::BulletPrefab(const float angle, const float ttl)
 {
 	auto rigid = new RigidBodyComponent(CollisionGroup::CATEGORY_PLAYER
 		, CollisionGroup::MASK_PLAYER
-		, false, true);
+		, true, false, true);
 	AddComponent(rigid);
 	auto bulletComp = new BulletComponent(angle);
 	AddComponent(bulletComp);
 
 	SetScale(1.0f);
 
+	m_pRectangle->setRotation(angle * Math::Rad2Deg);
+	
+	AddComponent(new DestroyComponent(ttl));
+
+	m_Tag = "Bullet";
+
 
 	auto sprite = new SpriteComponent();
 	AddComponent(sprite);
-	sprite->SetTexture("bullet_c");  
-
-
-	m_pRectangle->setRotation(angle * Math::Rad2Deg);
-	
-	AddComponent(new DestroyComponent(2.0f));
+	sprite->SetTexture("bullet_c");
 
 }
 

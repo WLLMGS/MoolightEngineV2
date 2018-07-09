@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "BulletPrefab.h"
 #include "GameScene.h"
+#include "FlameSpellPrefab.h"
 
 ShootingComponent::ShootingComponent()
 {
@@ -31,8 +32,12 @@ void ShootingComponent::Update(float elapsedSec)
 		float angle = Math::CalculateAngle(pos.x, pos.y, float(worldMouse.x), float(worldMouse.y));
 
 		
-		auto bullet = new BulletPrefab(angle);
+		//auto bullet = new BulletPrefab(angle);
 	
+	/*	auto bullet = new FlameSpellPrefab(angle);*/
+
+		auto bullet = new BulletPrefab(angle, 2.0f);
+
 		bullet->SetPosition(m_pGameObject->GetPosition().x, m_pGameObject->GetPosition().y);
 
 		m_pGameObject->GetScene()->AddChild(bullet);

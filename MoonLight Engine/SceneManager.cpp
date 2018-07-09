@@ -26,11 +26,16 @@ void SceneManager::Render()
 {
 	m_pScenes[m_ActiveScene]->RootRender();
 	m_pScenes[m_ActiveScene]->RenderUI();
+	m_pScenes[m_ActiveScene]->RenderMouse();
 }
 
 void SceneManager::AddScene(GameScene* scene)
 {
 	m_pScenes.push_back(scene);
+
+
+	//maybe here?
+	scene->Init();
 }
 
 void SceneManager::CleanUp()

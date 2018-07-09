@@ -12,7 +12,7 @@ WallPrefab::WallPrefab(WallDirection)
 	
 	m_Tag = "Wall";
 
-	AddComponent(new RigidBodyComponent(CollisionGroup::CATEGORY_SCENARY, CollisionGroup::MASK_SCENARY,true, true));
+	AddComponent(new RigidBodyComponent(CollisionGroup::CATEGORY_SCENARY, CollisionGroup::MASK_SCENARY,false, true, true));
 
 
 	SetScale(2.0f);

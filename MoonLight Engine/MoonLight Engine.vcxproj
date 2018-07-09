@@ -206,11 +206,13 @@
     <ClInclude Include="DestroyComponent.h" />
     <ClInclude Include="DungeonGenerator.h" />
     <ClInclude Include="ExplosionObject.h" />
+    <ClInclude Include="FlameSpellPrefab.h" />
     <ClInclude Include="FloorPrefab.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameSettings.h" />
+    <ClInclude Include="HealthComponent.h" />
     <ClInclude Include="HorizontalWallPrefab.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MainMenu.h" />
@@ -232,6 +234,8 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="VerticalWallPrefab.h" />
     <ClInclude Include="WallPrefab.h" />
+    <ClInclude Include="ZombieControllerComponent.h" />
+    <ClInclude Include="ZombiePrefab.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackgroundPrefab.cpp" />
@@ -291,10 +295,12 @@
     <ClCompile Include="DestroyComponent.cpp" />
     <ClCompile Include="DungeonGenerator.cpp" />
     <ClCompile Include="ExplosionObject.cpp" />
+    <ClCompile Include="FlameSpellPrefab.cpp" />
     <ClCompile Include="FloorPrefab.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="HealthComponent.cpp" />
     <ClCompile Include="HorizontalWallPrefab.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -320,6 +326,8 @@
     </ClCompile>
     <ClCompile Include="VerticalWallPrefab.cpp" />
     <ClCompile Include="WallPrefab.cpp" />
+    <ClCompile Include="ZombieControllerComponent.cpp" />
+    <ClCompile Include="ZombiePrefab.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
