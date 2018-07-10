@@ -268,6 +268,7 @@
     <ClInclude Include="ZombiePrefab.h" />
     <ClInclude Include="ZombieControllerComponent.h" />
     <ClInclude Include="HealthComponent.h" />
+    <ClInclude Include="MoveControllerComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameScene.cpp">
@@ -505,5 +506,6 @@
     <ClCompile Include="ZombiePrefab.cpp" />
     <ClCompile Include="ZombieControllerComponent.cpp" />
     <ClCompile Include="HealthComponent.cpp" />
+    <ClCompile Include="MoveControllerComponent.cpp" />
   </ItemGroup>
 </Project>

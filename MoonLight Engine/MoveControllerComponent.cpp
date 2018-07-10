@@ -1,49 +1,46 @@
 #include "stdafx.h"
-#include "MoveComponent.h"
+#include "MoveControllerComponent.h"
+#include "RigidBodyComponent.h"
 #include "InputManager.h"
 #include "GameObject.h"
-#include "RigidBodyComponent.h"
 
-MoveComponent::MoveComponent() :
-m_X(0.0f),
-m_Y(0.0f)
+MoveControllerComponent::MoveControllerComponent()
 {
 }
 
 
-MoveComponent::~MoveComponent()
+MoveControllerComponent::~MoveControllerComponent()
 {
 }
 
-void MoveComponent::Update(float elapsedSec)
+void MoveControllerComponent::Update(float )
 {
-	(elapsedSec);
 
 	auto input = InputManager::GetInstance();
 
 	auto rigid = m_pGameObject->GetComponent<RigidBodyComponent>();
 
-	m_X = 0.0f;
-	m_Y = 0.0f;
+	float x{}, y{};
+
+	input->GetThumbstickLeft(x, y);
+	
 
 	if(input->IsActionTriggered(GameSettings::Input::Right))
 	{
-		m_X = m_Speed;
+		x = 1;
 	}
 	if (input->IsActionTriggered(GameSettings::Input::Left))
 	{
-		m_X = -m_Speed;
+		x = -1;
 	}
 	if (input->IsActionTriggered(GameSettings::Input::Up))
 	{
-		m_Y = -m_Speed;
+		y = -1;
 	}
 	if (input->IsActionTriggered(GameSettings::Input::Down))
 	{
-		m_Y = m_Speed;
+		y = 1;
 	}
-	rigid->SetLinearVelocity(m_X, m_Y);
 
-
-
+	rigid->SetLinearVelocity(x * m_Speed, y * m_Speed);
 }

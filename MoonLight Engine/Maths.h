@@ -17,6 +17,11 @@ namespace Math
 
 		return angle;
 	}
+
+	inline float CalculateAngle(float x, float y)
+	{
+		return atan2(y, x);
+	}
 }
 
 

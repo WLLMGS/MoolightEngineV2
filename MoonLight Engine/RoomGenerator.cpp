@@ -96,6 +96,20 @@ void RoomGenerator::AddRoom(GameScene* scene, const float x, const float y, Door
 	zombie->SetPosition(centerX + 1.0f, centerY + 1.0f);
 	scene->AddChild(zombie);
 
+
+	zombie = new ZombiePrefab();
+	zombie->SetPosition(centerX, centerY + 2.0f);
+	scene->AddChild(zombie);
+
+	zombie = new ZombiePrefab();
+	zombie->SetPosition(centerX - 2.0f, centerY + 2.0f);
+	scene->AddChild(zombie);
+
+	zombie = new ZombiePrefab();
+	zombie->SetPosition(centerX + 2.0f, centerY + 2.0f);
+	scene->AddChild(zombie);
+
+
 }
 
 void RoomGenerator::AddFloor(GameScene* scene, const float x, const float y)

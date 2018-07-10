@@ -24,7 +24,7 @@ void ZombieControllerComponent::Update(float)
 	auto dy = abs(playerpos.y - pos.y);
 
 
-	if(dx < 350.0f && dy < 350.0f)
+	if(dx < 500.0f && dy < 500.0f)
 	{
 		float x{}, y{};
 

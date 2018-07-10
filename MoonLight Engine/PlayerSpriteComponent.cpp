@@ -2,6 +2,7 @@
 #include "PlayerSpriteComponent.h"
 #include "SpriteComponent.h"
 #include "GameObject.h"
+#include "InputManager.h"
 
 
 PlayerSpriteComponent::PlayerSpriteComponent()
@@ -17,44 +18,58 @@ PlayerSpriteComponent::~PlayerSpriteComponent()
 void PlayerSpriteComponent::Update(float )
 {
 	
-	auto mousePos = Mouse::getPosition();
-
-	auto worldMouse = Game::m_pWindow->mapPixelToCoords(mousePos);
-
-	auto pos = m_pGameObject->m_pRectangle->getPosition();
-
-	float angle = Math::CalculateAngle(pos.x, pos.y, float(worldMouse.x), float(worldMouse.y)) * Math::Rad2Deg;
+	;
 
 
-	if (angle > -22.5f && angle < 22.5f)
+	if(CONTROLLER)
+	{
+		float x{}, y{};
+
+		auto input = InputManager::GetInstance();
+		input->GetThumbstickRight(x, y);
+		if (x != 0 || y != 0) m_Angle = Math::CalculateAngle(x, y) * Math::Rad2Deg;
+	}
+	else
+	{
+		auto mousePos = Mouse::getPosition();
+
+		auto worldMouse = Game::m_pWindow->mapPixelToCoords(mousePos);
+
+		auto pos = m_pGameObject->m_pRectangle->getPosition();
+
+		m_Angle = Math::CalculateAngle(pos.x, pos.y, float(worldMouse.x), float(worldMouse.y)) * Math::Rad2Deg;
+	}
+
+	
+	if (m_Angle > -22.5f && m_Angle < 22.5f)
 	{
 		m_pSprite->SetTexture("character1Side");
 	}
-	else if (angle < -22.5f && angle > -67.5f)
+	else if (m_Angle < -22.5f && m_Angle > -67.5f)
 	{
 		m_pSprite->SetTexture("character1DiagUp");
 	}
-	else if (angle < -67.5f && angle > -112.5f)
+	else if (m_Angle < -67.5f && m_Angle > -112.5f)
 	{
 		m_pSprite->SetTexture("character1North");
 	}
-	else if (angle < -112.5f && angle > -157.5f)
+	else if (m_Angle < -112.5f && m_Angle > -157.5f)
 	{
 		m_pSprite->SetTexture("character1DiagUpFlipped");
 	}
-	else if (angle < -157.5f || angle > 157.5f)
+	else if (m_Angle < -157.5f || m_Angle > 157.5f)
 	{
 		m_pSprite->SetTexture("character1SideFlipped");
 	}
-	else if (angle < 157.5f && angle > 112.5f)
+	else if (m_Angle < 157.5f && m_Angle > 112.5f)
 	{
 		m_pSprite->SetTexture("character1DiagDownFlipped");
 	}
-	else if (angle < 112.5f && angle > 67.5f)
+	else if (m_Angle < 112.5f && m_Angle > 67.5f)
 	{
 		m_pSprite->SetTexture("character1South");
 	}
-	else if (angle < 67.5f && angle > 22.5f)
+	else if (m_Angle < 67.5f && m_Angle > 22.5f)
 	{
 		m_pSprite->SetTexture("character1DiagDown");
 	}

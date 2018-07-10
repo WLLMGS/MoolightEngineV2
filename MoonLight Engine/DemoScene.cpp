@@ -25,7 +25,7 @@ DemoScene::DemoScene()
 	InputManager::GetInstance()->AddAction(GameSettings::Input::Left, Keyboard::Q);
 
 
-	DungeonGenerator::GenerateDungeon(this, 7, 7);
+	DungeonGenerator::GenerateDungeon(this, 11, 11);
 
 	pPlayer = new PlayerPrefab();
 	

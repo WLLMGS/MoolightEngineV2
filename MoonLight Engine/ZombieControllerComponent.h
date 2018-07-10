@@ -10,6 +10,6 @@ public:
 private:
 	GameObject* m_pPlayer;
 
-	const float m_Speed = 100.0f;
+	const float m_Speed = 125.0f;
 };
 

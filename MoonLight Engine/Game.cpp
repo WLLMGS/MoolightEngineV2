@@ -6,6 +6,7 @@
 #include "PhysicsManager.h"
 #include "MainMenu.h"
 #include <chrono>
+#include "InputManager.h"
 
 using namespace std;
 
@@ -60,6 +61,7 @@ bool Game::ProcessEvents()
 }
 void Game::Update(float elapsedSec)
 {
+	InputManager::GetInstance()->Update();
 	SceneManager::GetInstance()->Update(elapsedSec);
 	PhysicsManager::GetInstance()->Update(elapsedSec);
 }

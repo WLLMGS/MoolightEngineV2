@@ -1,4 +1,7 @@
 #pragma once
+
+const bool CONTROLLER = false;
+
 namespace GameSettings
 {
 	const float TILESIZE = 32.0f;

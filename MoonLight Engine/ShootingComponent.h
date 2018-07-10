@@ -10,5 +10,7 @@ public:
 
 private:
 	float m_CD = 0.0f;
+private:
+	void Shoot(float angle);
 };
 

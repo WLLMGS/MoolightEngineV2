@@ -11,5 +11,7 @@ public:
 	void Init();
 private:
 	SpriteComponent* m_pSprite = nullptr;
+
+	float m_Angle = 0.0f;
 };
 

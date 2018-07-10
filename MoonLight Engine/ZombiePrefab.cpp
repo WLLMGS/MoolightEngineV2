@@ -17,7 +17,7 @@ ZombiePrefab::ZombiePrefab()
 	AddComponent(rigid);
 
 
-	m_pHealthComponent = new HealthComponent(3);
+	m_pHealthComponent = new HealthComponent(5);
 
 	AddComponent(m_pHealthComponent);
 }
