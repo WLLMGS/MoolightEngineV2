@@ -70,6 +70,8 @@ void GameObject::AddComponent(BaseComponent* comp)
 {
 	comp->SetGameObject(this);
 	m_pComponents.push_back(comp);
+
+	comp->Init();
 }
 
 

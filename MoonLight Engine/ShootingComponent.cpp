@@ -6,9 +6,9 @@
 #include "FlameSpellPrefab.h"
 #include "InputManager.h"
 
-ShootingComponent::ShootingComponent()
+ShootingComponent::ShootingComponent(const float cooldown) :
+m_Cooldown(cooldown)
 {
-
 }
 
 
@@ -20,11 +20,11 @@ void ShootingComponent::Update(float elapsedSec)
 {
 	auto input = InputManager::GetInstance();
 
-	m_CD -= elapsedSec;
+	m_Timer -= elapsedSec;
 
-	if(	sf::Mouse::isButtonPressed(sf::Mouse::Left) && m_CD < 0.0f)
+	if(	sf::Mouse::isButtonPressed(sf::Mouse::Left) && m_Timer < 0.0f)
 	{
-		m_CD = 0.15f;
+		m_Timer = m_Cooldown;
 
 		auto mousePos = Mouse::getPosition();
 
@@ -42,11 +42,9 @@ void ShootingComponent::Update(float elapsedSec)
 
 	input->GetThumbstickRight(x, y);
 
-	cout << x << " " << y << endl;
-
-	if((x != 0 || y != 0) && m_CD < 0.0f)
+	if((x != 0 || y != 0) && m_Timer < 0.0f)
 	{
-		m_CD = 0.15f;
+		m_Timer = m_Cooldown;
 
 		float angle = Math::CalculateAngle(x, y);
 
@@ -63,29 +61,42 @@ void ShootingComponent::Shoot(float angle)
 	m_pGameObject->GetScene()->AddChild(bullet);
 
 
-	bullet = new BulletPrefab(angle + 0.1f, 0.35f);
+	/*for(int i{1}; i < 1; ++i)
+	{
+		float e = (i * 10) * Math::Deg2Rad;
 
-	bullet->SetPosition(m_pGameObject->GetPosition().x, m_pGameObject->GetPosition().y);
-
-	m_pGameObject->GetScene()->AddChild(bullet);
-
-	bullet = new BulletPrefab(angle - 0.1f, 0.35f);
-
-	bullet->SetPosition(m_pGameObject->GetPosition().x, m_pGameObject->GetPosition().y);
-
-	m_pGameObject->GetScene()->AddChild(bullet);
+		bullet = new BulletPrefab(angle - e, 0.35f);
+		bullet->SetPosition(m_pGameObject->GetPosition().x, m_pGameObject->GetPosition().y);
+		m_pGameObject->GetScene()->AddChild(bullet);
 
 
+		bullet = new BulletPrefab(angle + e, 0.35f);
+		bullet->SetPosition(m_pGameObject->GetPosition().x, m_pGameObject->GetPosition().y);
+		m_pGameObject->GetScene()->AddChild(bullet);
 
-	bullet = new BulletPrefab(angle + 0.15f, 0.35f);
+	}*/
 
-	bullet->SetPosition(m_pGameObject->GetPosition().x, m_pGameObject->GetPosition().y);
+	/*float r = 96.0f;
+	float a = 360.0f / 20;
+*/
+	
+	
+	//for(int i{}; i < 20; ++i)
+	//{
+	//	float locAngle = a * i;
+	//	
+	//	locAngle *= Math::Deg2Rad;
+	//	//cout << locAngle << endl;
+	//	float posX = r * cos(locAngle) + worldPos.x;
+	//	float posY = r * sin(locAngle) + worldPos.y;
 
-	m_pGameObject->GetScene()->AddChild(bullet);
+	//	cout << posX << " " << posY << endl;
 
-	bullet = new BulletPrefab(angle - 0.15f, 0.35f);
+	//	bullet = new BulletPrefab(angle, 0.35f);
+	//	bullet->SetPosition(posX, posY);
+	//	m_pGameObject->GetScene()->AddChild(bullet);
+	//}
 
-	bullet->SetPosition(m_pGameObject->GetPosition().x, m_pGameObject->GetPosition().y);
+	
 
-	m_pGameObject->GetScene()->AddChild(bullet);
 }

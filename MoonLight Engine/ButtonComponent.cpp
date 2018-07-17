@@ -1,10 +1,11 @@
 #include "stdafx.h"
 #include "ButtonComponent.h"
 #include "GameObject.h"
+#include "ResourceManager.h"
 
-ButtonComponent::ButtonComponent(string texNormal, string texHover) :
-m_TextureNormal(texNormal),
-m_TextureHover(texHover)
+ButtonComponent::ButtonComponent() :
+m_ColorNormal(0,0,0,127),
+m_ColorHover(0,0,0,200)
 {
 }
 
@@ -12,6 +13,12 @@ m_TextureHover(texHover)
 ButtonComponent::~ButtonComponent()
 {
 }
+
+void ButtonComponent::Init()
+{	
+	m_pGameObject->m_pRectangle->setFillColor(m_ColorNormal);
+}
+
 
 void ButtonComponent::Update(float elapsedSec)
 {
@@ -33,11 +40,6 @@ void ButtonComponent::OnClick(function<void()> func)
 	m_OnClick = func;
 }
 
-void ButtonComponent::SetTextures(string normal, string hover)
-{
-	m_TextureHover = hover;
-	m_TextureNormal = normal;
-}
 
 void ButtonComponent::CheckHover()
 {
@@ -49,6 +51,7 @@ void ButtonComponent::CheckHover()
 	auto buttonpos = m_pGameObject->m_pRectangle->getPosition();
 	auto buttonsize = m_pGameObject->m_pRectangle->getSize();
 
+
 	if (   pos.x > buttonpos.x - buttonsize.x / 2.0f
 		&& pos.x < buttonpos.x + buttonsize.x / 2.0f
 		&& pos.y > buttonpos.y - buttonsize.y / 2.0f
@@ -57,8 +60,7 @@ void ButtonComponent::CheckHover()
 		if(!m_IsHovering)
 		{
 			//change texture to hover
-			auto sprite = m_pGameObject->GetComponent<SpriteComponent>();
-			sprite->SetTexture(m_TextureHover);
+			m_pGameObject->m_pRectangle->setFillColor(m_ColorHover);
 		}
 		m_IsHovering = true;
 	}
@@ -66,10 +68,10 @@ void ButtonComponent::CheckHover()
 	{
 		if(m_IsHovering)
 		{
-			//change texture to non hover
-			auto sprite = m_pGameObject->GetComponent<SpriteComponent>();
-			sprite->SetTexture(m_TextureNormal);
+			m_pGameObject->m_pRectangle->setFillColor(m_ColorNormal);
 		}
 		m_IsHovering = false;
 	}
+
+	
 }

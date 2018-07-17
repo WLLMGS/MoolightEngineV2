@@ -3,11 +3,12 @@
 #include "RigidBodyComponent.h"
 #include "BulletComponent.h"
 
-BulletComponent::BulletComponent(const float angle):
-m_Angle(angle)
+BulletComponent::BulletComponent(const float angle, const float speed):
+m_Angle(angle),
+m_Speed(speed)
 {
-	m_Velocity.x = cosf(angle) * Math::Rad2Deg * m_Speed;
-	m_Velocity.y = sinf(angle) * Math::Rad2Deg * m_Speed;
+	m_Velocity.x = cosf(angle) * Math::Rad2Deg * speed;
+	m_Velocity.y = sinf(angle) * Math::Rad2Deg * speed;
 }
 
 

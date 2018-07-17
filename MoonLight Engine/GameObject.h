@@ -1,8 +1,6 @@
 #pragma once
 #include "BaseComponent.h"
-#include "TransformComponent.h"
 #include "SpriteComponent.h"
-#include "ColliderComponent.h"
 
 class GameScene;
 
@@ -27,7 +25,7 @@ public:
 	void SetScale(float scale);
 	float GetScale() const;
 	WG::Vector2 GetPosition();
-	virtual void OnCollision(GameObject* other); 
+	void OnCollision(GameObject* other); 
 	void Destroy();
 	bool IsDestroyed() const;
 
@@ -37,6 +35,8 @@ public:
 	void SetSize(float x, float y);
 	Vector2f GetOriginalSize();
 	string GetName() const;
+	virtual void OnDestroy(){};
+	
 public:
 	template<class T> T* GetComponent()
 	{
@@ -64,7 +64,7 @@ private:
 	virtual void Render(){};
 	virtual void HandleCollision(GameObject* other) { (other); };
 	virtual void Init(){};
-
+	
 private:
 	friend class SpriteComponent;
 	//friend class TransformComponent;

@@ -27,13 +27,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -148,7 +148,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BackgroundPrefab.h" />
     <ClInclude Include="BaseComponent.h" />
     <ClInclude Include="Box2D\Box2D.h" />
     <ClInclude Include="Box2D\Collision\b2BroadPhase.h" />
@@ -197,49 +196,30 @@
     <ClInclude Include="Box2D\Dynamics\Joints\b2WeldJoint.h" />
     <ClInclude Include="Box2D\Dynamics\Joints\b2WheelJoint.h" />
     <ClInclude Include="Box2D\Rope\b2Rope.h" />
-    <ClInclude Include="BulletPrefab.h" />
     <ClInclude Include="ButtonComponent.h" />
     <ClInclude Include="Camera.h" />
-    <ClInclude Include="CratePrefab.h" />
     <ClInclude Include="CustomContactListener.h" />
-    <ClInclude Include="DemoScene.h" />
     <ClInclude Include="DestroyComponent.h" />
-    <ClInclude Include="DungeonGenerator.h" />
-    <ClInclude Include="ExplosionObject.h" />
-    <ClInclude Include="FlameSpellPrefab.h" />
-    <ClInclude Include="FloorPrefab.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameSettings.h" />
-    <ClInclude Include="HealthComponent.h" />
-    <ClInclude Include="HorizontalWallPrefab.h" />
     <ClInclude Include="InputManager.h" />
-    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Maths.h" />
     <ClInclude Include="MousePrefab.h" />
     <ClInclude Include="MoveComponent.h" />
-    <ClInclude Include="MoveControllerComponent.h" />
     <ClInclude Include="PhysicsManager.h" />
-    <ClInclude Include="PlayButtonPrefab.h" />
-    <ClInclude Include="PlayerPrefab.h" />
     <ClInclude Include="PlayerSpriteComponent.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="RigidBodyComponent.h" />
-    <ClInclude Include="RoomGenerator.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="BulletComponent.h" />
-    <ClInclude Include="ShootingComponent.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="VerticalWallPrefab.h" />
-    <ClInclude Include="WallPrefab.h" />
-    <ClInclude Include="ZombieControllerComponent.h" />
-    <ClInclude Include="ZombiePrefab.h" />
+    <ClInclude Include="TextComponent.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BackgroundPrefab.cpp" />
     <ClCompile Include="BaseComponent.cpp" />
     <ClCompile Include="Box2D\Collision\b2BroadPhase.cpp" />
     <ClCompile Include="Box2D\Collision\b2CollideCircle.cpp" />
@@ -287,38 +267,23 @@
     <ClCompile Include="Box2D\Dynamics\Joints\b2WeldJoint.cpp" />
     <ClCompile Include="Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="Box2D\Rope\b2Rope.cpp" />
-    <ClCompile Include="BulletPrefab.cpp" />
     <ClCompile Include="ButtonComponent.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="CratePrefab.cpp" />
     <ClCompile Include="CustomContactListener.cpp" />
-    <ClCompile Include="DemoScene.cpp" />
     <ClCompile Include="DestroyComponent.cpp" />
-    <ClCompile Include="DungeonGenerator.cpp" />
-    <ClCompile Include="ExplosionObject.cpp" />
-    <ClCompile Include="FlameSpellPrefab.cpp" />
-    <ClCompile Include="FloorPrefab.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
-    <ClCompile Include="HealthComponent.cpp" />
-    <ClCompile Include="HorizontalWallPrefab.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MousePrefab.cpp" />
     <ClCompile Include="MoveComponent.cpp" />
-    <ClCompile Include="MoveControllerComponent.cpp" />
     <ClCompile Include="PhysicsManager.cpp" />
-    <ClCompile Include="PlayButtonPrefab.cpp" />
-    <ClCompile Include="PlayerPrefab.cpp" />
     <ClCompile Include="PlayerSpriteComponent.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="RigidBodyComponent.cpp" />
-    <ClCompile Include="RoomGenerator.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="BulletComponent.cpp" />
-    <ClCompile Include="ShootingComponent.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -326,10 +291,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="VerticalWallPrefab.cpp" />
-    <ClCompile Include="WallPrefab.cpp" />
-    <ClCompile Include="ZombieControllerComponent.cpp" />
-    <ClCompile Include="ZombiePrefab.cpp" />
+    <ClCompile Include="TextComponent.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

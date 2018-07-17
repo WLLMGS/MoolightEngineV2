@@ -9,6 +9,7 @@ public:
 	void Update();
 	void Draw();
 	void Set(GameObject* target, WG::Vector2 size, float zoom);
+	void SetEnabled(bool enabled);
 private:
 	View m_View;
 	

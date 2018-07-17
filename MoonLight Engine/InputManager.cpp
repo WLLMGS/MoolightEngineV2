@@ -5,6 +5,10 @@
 
 InputManager::InputManager()
 {
+	AddAction(GameSettings::Input::Up, Keyboard::Z);
+	AddAction(GameSettings::Input::Down, Keyboard::S);
+	AddAction(GameSettings::Input::Right, Keyboard::D);
+	AddAction(GameSettings::Input::Left, Keyboard::Q);
 }
 
 

@@ -13,6 +13,7 @@ BaseComponent::~BaseComponent()
 
 void BaseComponent::Init()
 {
+	
 }
 
 void BaseComponent::Update(float elapsedSec)

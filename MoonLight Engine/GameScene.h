@@ -23,11 +23,12 @@ public:
 
 	GameObject* FindGameObjectByName(string name);
 	vector<GameObject*> FindGameObjectsByName(string name);
+	string GetName() const;
 
 protected:
 	Camera m_Camera;
 	MousePrefab m_Mouse;
-
+	string m_Name = "Default";
 private:
 	virtual void Update(float elapsedSec) = 0;
 	virtual void Render() = 0;

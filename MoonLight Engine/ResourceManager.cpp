@@ -10,12 +10,23 @@ Texture* ResourceManager::RequestTexture(string name)
 	return (m_Resources[name]) ? m_Resources[name] : nullptr;
 }
 
+Font* ResourceManager::RequestFont(string name)
+{
+	return (m_Fonts[name]) ? m_Fonts[name] : nullptr;
+}
+
 void ResourceManager::CleanUp()
 {
 	for(auto p : m_Resources)
 	{
 		delete p.second;
 		p.second = nullptr;
+	}
+
+	for(auto f : m_Fonts)
+	{
+		delete f.second;
+		f.second = nullptr;
 	}
 }
 
@@ -46,6 +57,14 @@ ResourceManager::ResourceManager()
 	LoadTexture("floor_wood", "floor_wood.png");
 	LoadTexture("flame_bullet", "flame_bullet.png");
 	LoadTexture("zombie_walk", "zombie_walk.png");
+	LoadTexture("coin", "coin2.png");
+	LoadTexture("chest", "chest1.png");
+	LoadTexture("smoke", "Death_Poof.png");
+	LoadTexture("title", "project_hellfire.png");
+	LoadTexture("menuBackground", "menuBackground.png");
+
+	LoadFont("default", "default.ttf");
+
 }
 
 void ResourceManager::LoadTexture(string name, string path)
@@ -54,4 +73,14 @@ void ResourceManager::LoadTexture(string name, string path)
 	texture->loadFromFile(m_PathPrefix + path);
 
 	m_Resources[name] = texture;
+}
+
+void ResourceManager::LoadFont(string name, string path)
+{
+	string p = "Resources/Fonts/" + path;
+
+	Font* f = new Font();
+	f->loadFromFile(p);
+
+	m_Fonts[name] = f;
 }

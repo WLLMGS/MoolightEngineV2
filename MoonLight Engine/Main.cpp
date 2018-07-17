@@ -12,5 +12,7 @@ int main()
 
 	game.Run();
 
+	game.CleanUp();
+
 	return 0;
 }

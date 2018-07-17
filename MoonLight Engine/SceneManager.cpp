@@ -55,3 +55,12 @@ void SceneManager::NextScene()
 	}
 	else m_ActiveScene++;
 }
+
+void SceneManager::GoToScene(string name)
+{
+	for(size_t t{}; t < m_pScenes.size(); ++t)
+	{
+		auto scene = m_pScenes[t];
+		if (scene->GetName() == name) m_ActiveScene = t;
+	}
+}

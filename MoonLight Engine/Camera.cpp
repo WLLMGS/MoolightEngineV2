@@ -34,3 +34,10 @@ void Camera::Set(GameObject* target, WG::Vector2 size, float zoom)
 
 	m_IsSet = true;
 }
+
+void Camera::SetEnabled(bool enabled)
+{
+	m_IsSet = enabled;
+
+	if (!m_IsSet) Game::m_pWindow->setView(Game::m_pWindow->getDefaultView());
+}

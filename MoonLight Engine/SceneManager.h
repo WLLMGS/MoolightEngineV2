@@ -18,6 +18,7 @@ public:
 	void AddScene(GameScene* scene);
 	void CleanUp();
 	void NextScene();
+	void GoToScene(string name);
 private:
 	SceneManager();
 

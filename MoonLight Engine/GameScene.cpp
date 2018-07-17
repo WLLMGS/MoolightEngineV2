@@ -34,6 +34,7 @@ void GameScene::RootUpdate(float elapsedSec)
 
 		if(obj->IsDestroyed())
 		{
+			obj->OnDestroy();
 			Destroy(obj);
 		}
 		else obj->RootUpdate(elapsedSec);
@@ -143,6 +144,11 @@ vector<GameObject*> GameScene::FindGameObjectsByName(string name)
 	}
 
 	return results;
+}
+
+string GameScene::GetName() const
+{
+	return m_Name;
 }
 
 void GameScene::Destroy(GameObject* obj)

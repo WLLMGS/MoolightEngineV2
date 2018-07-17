@@ -1,5 +1,5 @@
 #pragma once
-#include "GameObject.h"
+#include "../MoonLight Engine/GameObject.h"
 
 class MousePrefab : public GameObject
 {

@@ -5,20 +5,20 @@
 class ButtonComponent : public BaseComponent
 {
 public:
-	ButtonComponent(string texNormal, string texHover);
+	ButtonComponent();
 	~ButtonComponent();
+	virtual void Init() override;
 	virtual void Update(float elapsedSec) override;
 	void OnClick(function<void()> func);
-	void SetTextures(string normal, string hover);
 private:
 	float m_Cooldown = 0.1f;
 	float m_Timer = 0.0f;
 	bool m_IsHovering = false;
 	function<void()> m_OnClick;
 
+	const Color m_ColorNormal;
+	const Color m_ColorHover;
 
-	string m_TextureNormal;
-	string m_TextureHover;
 private:
 	void CheckHover();
 };

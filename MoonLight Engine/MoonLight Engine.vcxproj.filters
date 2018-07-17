@@ -22,6 +22,9 @@
     <Filter Include="Box2D">
       <UniqueIdentifier>{a7b82714-f02b-4c51-8b1f-b549980cf5ce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Move">
+      <UniqueIdentifier>{1d884267-0d17-4efc-819c-c9e480b454fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameScene.h">
@@ -29,9 +32,6 @@
     </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="DemoScene.h">
-      <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Core</Filter>
@@ -62,12 +62,6 @@
     </ClInclude>
     <ClInclude Include="MoveComponent.h">
       <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerPrefab.h">
-      <Filter>Prefabs</Filter>
-    </ClInclude>
-    <ClInclude Include="WallPrefab.h">
-      <Filter>Prefabs</Filter>
     </ClInclude>
     <ClInclude Include="Maths.h">
       <Filter>Core</Filter>
@@ -234,41 +228,15 @@
     <ClInclude Include="DestroyComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="ShootingComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletPrefab.h">
-      <Filter>Prefabs</Filter>
-    </ClInclude>
-    <ClInclude Include="CratePrefab.h">
-      <Filter>Prefabs</Filter>
-    </ClInclude>
-    <ClInclude Include="ExplosionObject.h">
-      <Filter>Prefabs</Filter>
-    </ClInclude>
     <ClInclude Include="ButtonComponent.h">
       <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenu.h">
-      <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="MousePrefab.h">
       <Filter>Prefabs</Filter>
     </ClInclude>
-    <ClInclude Include="PlayButtonPrefab.h">
-      <Filter>Prefabs</Filter>
+    <ClInclude Include="TextComponent.h">
+      <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="RoomGenerator.h" />
-    <ClInclude Include="DungeonGenerator.h" />
-    <ClInclude Include="BackgroundPrefab.h" />
-    <ClInclude Include="HorizontalWallPrefab.h" />
-    <ClInclude Include="VerticalWallPrefab.h" />
-    <ClInclude Include="FloorPrefab.h" />
-    <ClInclude Include="FlameSpellPrefab.h" />
-    <ClInclude Include="ZombiePrefab.h" />
-    <ClInclude Include="ZombieControllerComponent.h" />
-    <ClInclude Include="HealthComponent.h" />
-    <ClInclude Include="MoveControllerComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameScene.cpp">
@@ -276,9 +244,6 @@
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="DemoScene.cpp">
-      <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Core</Filter>
@@ -306,12 +271,6 @@
     </ClCompile>
     <ClCompile Include="MoveComponent.cpp">
       <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerPrefab.cpp">
-      <Filter>Prefabs</Filter>
-    </ClCompile>
-    <ClCompile Include="WallPrefab.cpp">
-      <Filter>Prefabs</Filter>
     </ClCompile>
     <ClCompile Include="Box2D\Common\b2BlockAllocator.cpp">
       <Filter>Box2D</Filter>
@@ -472,40 +431,12 @@
     <ClCompile Include="DestroyComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="ShootingComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletPrefab.cpp">
-      <Filter>Prefabs</Filter>
-    </ClCompile>
-    <ClCompile Include="CratePrefab.cpp">
-      <Filter>Prefabs</Filter>
-    </ClCompile>
-    <ClCompile Include="ExplosionObject.cpp">
-      <Filter>Prefabs</Filter>
-    </ClCompile>
     <ClCompile Include="ButtonComponent.cpp">
       <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="MainMenu.cpp">
-      <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="MousePrefab.cpp">
       <Filter>Prefabs</Filter>
     </ClCompile>
-    <ClCompile Include="PlayButtonPrefab.cpp">
-      <Filter>Prefabs</Filter>
-    </ClCompile>
-    <ClCompile Include="RoomGenerator.cpp" />
-    <ClCompile Include="DungeonGenerator.cpp" />
-    <ClCompile Include="BackgroundPrefab.cpp" />
-    <ClCompile Include="HorizontalWallPrefab.cpp" />
-    <ClCompile Include="VerticalWallPrefab.cpp" />
-    <ClCompile Include="FloorPrefab.cpp" />
-    <ClCompile Include="FlameSpellPrefab.cpp" />
-    <ClCompile Include="ZombiePrefab.cpp" />
-    <ClCompile Include="ZombieControllerComponent.cpp" />
-    <ClCompile Include="HealthComponent.cpp" />
-    <ClCompile Include="MoveControllerComponent.cpp" />
+    <ClCompile Include="TextComponent.cpp" />
   </ItemGroup>
 </Project>

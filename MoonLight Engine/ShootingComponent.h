@@ -4,13 +4,15 @@
 class ShootingComponent : public BaseComponent
 {
 public:
-	ShootingComponent();
+	ShootingComponent(const float cooldown = 0.25f);
 	~ShootingComponent();
 	virtual void Update(float elapsedSec) override;
 
 private:
-	float m_CD = 0.0f;
+	float m_Timer = 0.0f;
+	float m_Cooldown;
 private:
-	void Shoot(float angle);
+	virtual void Shoot(float angle);
+	
 };
 

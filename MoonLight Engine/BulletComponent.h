@@ -5,7 +5,7 @@
 class BulletComponent : public BaseComponent
 {
 public:
-	BulletComponent(const float angle);
+	BulletComponent(const float angle, const float speed = 20.0f);
 	~BulletComponent();
 	virtual void Update(float elapsedSec) override;
 	void SetSpeed(float speed);
